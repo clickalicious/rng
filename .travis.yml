@@ -17,8 +17,8 @@ matrix:
   fast_finish: true
 
 before_install:
-  - travis_retry composer selfupdate
-  - composer --version
+  - composer self-update --no-interaction
+  - composer --version --no-interaction
 
 env:
   - PREFER_LOWEST="--prefer-lowest"
@@ -29,7 +29,7 @@ before_script:
   - composer --optimize-autoloader --no-interaction
 
 script:
-  - phpunit -c tests/ --coverage-clover=coverage.clover --coverage-html=./docs/coverage
+  - bin/phpunit -c tests/ --coverage-clover=coverage.clover --coverage-html=./docs/coverage
 
 after_script:
   # We upload only for reference platform! This is our base for further code analyses and so on.
@@ -49,11 +49,10 @@ after_success:
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
   - git push --tags --quiet https://$GITHUBKEY@github.com/clickalicious/Rng > /dev/null 2>&1
 
-# whitelist
+# blacklist
 branches:
-  only:
-    - master
-    - stable
+  except:
+    - /^build-[0-9a-z\-]*/
 
 # Who to notify?
 notifications:

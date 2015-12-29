@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/rng",
-  "description": "Random number generator for PHP",
+  "description": "Rng - The random number generator for PHP",
   "authors": [
     {
       "name": "Benjamin Carl",
@@ -13,15 +13,15 @@
       "php": ">=5.3.0"
   },
   "require-dev": {
-      "raulfraile/ladybug": "1.0.*",
-      "phpunit/phpunit": "4.5.*"
+      "raulfraile/ladybug": "~1.0.9",
+      "phpunit/phpunit": "~4.5.0"
   },
   "autoload": {
       "psr-4": {
-          "Clickalicious\\": "lib/Clickalicious/"
+          "Clickalicious\\": "src/Clickalicious/"
       }
   },
-  "include-path": ["lib/"],
+  "include-path": ["src/"],
   "minimum-stability": "dev",
   "keywords": [
     "RNG",
@@ -41,6 +41,10 @@
     "wiki": "https://github.com/clickalicious/Rng/wiki"
   },
   "config" : {
-    "bin-dir" : "bin"
+    "bin-dir" : "bin",
+    "preferred-install": "dist",
+    "platform": {
+      "php": "5.3.9"
+    }
   }
 }

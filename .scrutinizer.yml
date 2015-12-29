@@ -1,5 +1,5 @@
 filter:
-    paths: [lib/*]
+    paths: [src/*]
     excluded_paths: [bin/*, docs/*, tests/*]
 before_commands:
     - 'composer install --prefer-source --prefer-lowest'

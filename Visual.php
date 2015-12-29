@@ -52,7 +52,7 @@
  * @link       https://github.com/clickalicious/Rng
  */
 
-require_once 'lib/Clickalicious/Rng/Bootstrap.php';
+require_once 'src/Clickalicious/Rng/Bootstrap.php';
 
 // Clean config
 define('RNG_VISUAL_ITERATIONS', 100000);

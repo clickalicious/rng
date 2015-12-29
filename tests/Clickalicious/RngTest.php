@@ -1,6 +1,8 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
+namespace Clickalicious;
+
 /**
  * Rng
  *
@@ -68,7 +70,7 @@ use Clickalicious\Rng\Generator;
  * @version    Git: $Id$
  * @link       https://github.com/clickalicious/Rng
  */
-class RngTest extends PHPUnit_Framework_TestCase
+class RngTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test: Get instance

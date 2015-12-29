@@ -48,7 +48,7 @@ after_success:
   - echo -n $GIT_TAG > public/version
   - git commit -m "Set build VERSION number" public/version
   - git tag $GIT_TAG -a -m "Generated tag from TravisCI build $TRAVIS_BUILD_NUMBER"
-  - git push --tags --quiet https://$GITHUBKEY@github.com/clickalicious/Doozr > /dev/null 2>&1
+  - git push --tags --quiet https://$GITHUBKEY@github.com/clickalicious/Rng > /dev/null 2>&1
 
 # whitelist
 branches:

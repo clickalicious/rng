@@ -21,7 +21,6 @@
           "Clickalicious\\": "src/Clickalicious/"
       }
   },
-  "include-path": ["src/"],
   "minimum-stability": "dev",
   "keywords": [
     "RNG",

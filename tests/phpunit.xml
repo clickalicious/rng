@@ -17,7 +17,7 @@
     >
     <testsuites>
         <testsuite name="Rng">
-            <directory>../test/</directory>
+            <directory>../tests/</directory>
         </testsuite>
     </testsuites>
 

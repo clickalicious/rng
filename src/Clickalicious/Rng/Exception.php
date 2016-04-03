@@ -1,20 +1,21 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 namespace Clickalicious\Rng;
 
 /**
- * Rng
+ * Rng.
  *
  * Exception.php - Exception of Rng package.
  *
  *
- * PHP versions 5.3
+ * PHP versions 5.4
  *
  * LICENSE:
  * Rng - Random number generator for PHP
  *
- * Copyright (c) 2015, Benjamin Carl
+ * Copyright (c) 2015 - 2016, Benjamin Carl
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,27 +46,29 @@ namespace Clickalicious\Rng;
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Exception
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 
 /**
- * Rng
+ * Rng.
  *
  * Exception of Rng package.
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Exception
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 class Exception extends \RuntimeException

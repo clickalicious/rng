@@ -1,20 +1,20 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 namespace Clickalicious;
 
 /**
- * Rng
+ * Rng.
  *
  * RngTest.php - Unit tests for rng functionality.
  *
- *
- * PHP versions 5.3
+ * PHP versions 5.4
  *
  * LICENSE:
  * Rng - Random number generator for PHP
  *
- * Copyright (c) 2015, Benjamin Carl
+ * Copyright (c) 2015 - 2016, Benjamin Carl
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,39 +45,39 @@ namespace Clickalicious;
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Test
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 
 use Clickalicious\Rng\Generator;
 
 /**
- * Rng
+ * Rng.
  *
  * Unit tests for client functionality.
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Tests
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 class RngTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Test: Get instance
+     * Test: Get instance.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
     public function testInstance()
     {
@@ -88,13 +88,11 @@ class RngTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test: Get instance with mode default
+     * Test: Get instance with mode default.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testModeDefault()
+    public function testCreatingInstanceByModeDefault()
     {
         $generator = new Generator();
 
@@ -105,13 +103,11 @@ class RngTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test: Get instance with mode php default
+     * Test: Get instance with mode php default.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testModePhpDefault()
+    public function testCreatingInstanceByModePhpDefault()
     {
         $generator = new Generator(
             Generator::MODE_PHP_DEFAULT
@@ -124,13 +120,11 @@ class RngTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test: Get instance with mode php mersenne twister default
+     * Test: Get instance with mode php mersenne twister default.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testModePhpMersenneTwister()
+    public function testCreatingInstanceByModePhpMersenneTwister()
     {
         $generator = new Generator(
             Generator::MODE_PHP_MERSENNE_TWISTER
@@ -143,13 +137,11 @@ class RngTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test: Get instance with mode php mcrypt extension
+     * Test: Get instance with mode php mcrypt extension.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testModePhpMcrypt()
+    public function testCreatingInstanceByModePhpMcrypt()
     {
         $generator = new Generator(
             Generator::MODE_MCRYPT
@@ -162,13 +154,28 @@ class RngTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test: Get instance with mode php mcrypt extension.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testCreatingInstanceByModeOpenSsl()
+    {
+        $generator = new Generator(
+            Generator::MODE_OPEN_SSL
+        );
+
+        $this->assertInstanceOf(
+            'Clickalicious\Rng\Generator',
+            $generator
+        );
+    }
+
+    /**
      * Test generating random number with default setting.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testGenerateDefault()
+    public function testGeneratingRandomIntegerByDefaults()
     {
         $generator = new Generator();
         $this->assertInternalType('int', $generator->generate());
@@ -178,10 +185,8 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test generating random number with php default implementation.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testGeneratePhpDefault()
+    public function testGeneratingRandomIntegerByPhpDefault()
     {
         $generator = new Generator(Generator::MODE_PHP_DEFAULT);
         $this->assertInternalType('int', $generator->generate());
@@ -191,10 +196,8 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test generating random number with php new mersenne twister algorithm.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testGeneratePhpMersenneTwister()
+    public function testGeneratingRandomIntegerByPhpMersenneTwister()
     {
         $generator = new Generator(Generator::MODE_PHP_MERSENNE_TWISTER);
         $this->assertInternalType('int', $generator->generate());
@@ -204,12 +207,21 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test generating random number with php mcrypt extension algorithm.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testGeneratePhpMcrypt()
+    public function testGeneratingRandomIntegerByPhpMcrypt()
     {
         $generator = new Generator(Generator::MODE_MCRYPT);
+        $this->assertInternalType('int', $generator->generate());
+    }
+
+    /**
+     * Test generating random number with php openssl extension algorithm.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testGeneratingRandomIntegerByOpenSsl()
+    {
+        $generator = new Generator(Generator::MODE_OPEN_SSL);
         $this->assertInternalType('int', $generator->generate());
     }
 
@@ -217,11 +229,9 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test: Test passing invalid/unknown mode.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      * @expectedException \Clickalicious\Rng\Exception
      */
-    public function testInvalidMode()
+    public function testCreatingInstanceByInvalidModeException()
     {
         $generator = new Generator(PHP_INT_MAX);
     }
@@ -230,27 +240,23 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test: Test generating seeds.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testSeedGenerating()
+    public function testGeneratingIntegerSeed()
     {
         $generator = new Generator();
         $seed      = $generator->generateSeed();
 
         $this->assertInternalType('int', $seed);
     }
-
+    
     /**
      * Test: Test generating instance with seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testInstanceMcryptWithSeed()
+    public function testCreatingInstanceByModeMcryptWithSeed()
     {
-        $seed = 123456;
+        $seed      = 123456;
         $generator = new Generator(Generator::MODE_MCRYPT, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -259,12 +265,22 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test: Test generating instance with seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testInstancePhpDefaultWithSeed()
+    public function testCreatingInstanceByModeOpenSslWithSeed()
     {
-        $seed = 123456;
+        $seed      = 123456;
+        $generator = new Generator(Generator::MODE_OPEN_SSL, $seed);
+        $this->assertSame($seed, $generator->getSeed());
+    }
+
+    /**
+     * Test: Test generating instance with seed.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testCreatingInstanceByModePhpDefaultWithSeed()
+    {
+        $seed      = 123456;
         $generator = new Generator(Generator::MODE_PHP_DEFAULT, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -273,12 +289,10 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test: Test generating instance with seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      */
-    public function testInstancePhpMersenneTwisterWithSeed()
+    public function testCreatingInstanceByModePhpMersenneTwisterWithSeed()
     {
-        $seed = 123456;
+        $seed      = 123456;
         $generator = new Generator(Generator::MODE_PHP_MERSENNE_TWISTER, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -287,14 +301,52 @@ class RngTest extends \PHPUnit_Framework_TestCase
      * Test: Test generating instance with seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @return void
-     * @access protected
      * @expectedException \Clickalicious\Rng\Exception
      */
-    public function testInvalidSeed()
+    public function testTryToSetVariableWithInvalidTypeForSeed()
     {
-        $seed = 'Foo';
+        $seed      = 'Foo';
         $generator = new Generator();
-        $generator->seed($seed);
+        $generator
+            ->setSeed($seed);
+    }
+
+    /**
+     * Test: Test generating random bytes for public API.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testGenerateRandomBytesByModePhpInternalOnPublicApi()
+    {
+        $generator   = new Generator();
+
+        $randomBytes = $generator->getRandomBytes(4096);
+        $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
+    }
+
+    /**
+     * Test: Test generating random bytes for public API.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testGenerateRandomBytesByModePhpMcryptOnPublicApi()
+    {
+        $generator   = new Generator();
+
+        $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_MCRYPT);
+        $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
+    }
+
+    /**
+     * Test: Test generating random bytes for public API.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testGenerateRandomBytesByModeOpenSslOnPublicApi()
+    {
+        $generator   = new Generator();
+
+        $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_OPEN_SSL);
+        $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
     }
 }

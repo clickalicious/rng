@@ -49,7 +49,7 @@ echo $number;
 
 ## Requirements
 
- - PHP >= 5.3 (compatible up to version 5.6)
+ - PHP >= 5.4 (compatible up to version 5.6)
 
 
 ## Philosophy

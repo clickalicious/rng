@@ -49,7 +49,7 @@ echo $number;
 
 ## Requirements
 
- - PHP >= 5.4 (compatible up to version 5.6)
+ - PHP >= 5.4 (compatible up to version 5.6 as well as 7.x and HHVM)
 
 
 ## Philosophy
@@ -64,8 +64,11 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 
 ## Roadmap
 
-- [ ] More tests
-- [ ] Better visualization
+- [x] Focus on stable version 1.0.0
+- [x] with more tests
+- [x] with better visualization
+- [x] with integrated polyfill
+- [ ] Security check
 
 
 ## Security Issues

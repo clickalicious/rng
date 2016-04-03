@@ -1,20 +1,21 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 namespace Clickalicious\Rng;
 
 /**
- * Rng
+ * Rng.
  *
  * Bootstrap.php - Bootstrapping of directories and so on.
  *
  *
- * PHP versions 5.3
+ * PHP versions 5.4
  *
  * LICENSE:
  * Rng - Plain vanilla PHP Rng client with full support of Rng protocol.
  *
- * Copyright (c) 2015, Benjamin Carl
+ * Copyright (c) 2015 - 2016, Benjamin Carl
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -45,12 +46,13 @@ namespace Clickalicious\Rng;
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Bootstrap
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 
@@ -58,15 +60,15 @@ namespace Clickalicious\Rng;
 require_once 'Autoloader.php';
 
 /**
- * Detects composer in global scope
+ * Detects composer in global scope.
  *
  * @author Benjamin Carl <opensource@clickalicious.de>
+ *
  * @return bool TRUE if composer is active, otherwise FALSE
- * @access public
  */
 function composer_running()
 {
-    $result = false;
+    $result  = false;
     $classes = get_declared_classes();
     natsort($classes);
     foreach ($classes as $class) {
@@ -83,17 +85,16 @@ function composer_running()
 // The base path to /src/ if we don't have Composer we need to know root path
 define(
     'CLICKALICIOUS_RNG_BASE_PATH',
-    realpath(dirname(__FILE__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR) .
+    realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR).
     DIRECTORY_SEPARATOR
 );
 
 // Root node
-$root = realpath(CLICKALICIOUS_RNG_BASE_PATH . '../');
+$root = realpath(CLICKALICIOUS_RNG_BASE_PATH.'../');
 
 // Check for composer existence
-if (true === $composerExist = $composerRunning = file_exists($root . '/vendor/autoload.php')) {
-    include_once $root . '/vendor/autoload.php';
-
+if (true === $composerExist = $composerRunning = file_exists($root.'/vendor/autoload.php')) {
+    include_once $root.'/vendor/autoload.php';
 } else {
     $composerExist = $composerRunning = composer_running();
 }
@@ -122,4 +123,4 @@ $loader = new Autoloader();
 $loader->register();
 
 // register the base directories for the namespace prefix
-$loader->addNamespace('Clickalicious\Rng', CLICKALICIOUS_RNG_BASE_PATH . 'Clickalicious\Rng');
+$loader->addNamespace('Clickalicious\Rng', CLICKALICIOUS_RNG_BASE_PATH.'Clickalicious\Rng');

@@ -1,21 +1,21 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 namespace Clickalicious\Rng;
 
 /**
- * Rng
+ * Rng.
  *
  * Generator.php - Random number generator for PHP
  * Fallback mechanism implementation based on current best practice.
  *
- *
- * PHP versions 5.3
+ * PHP versions 5.4
  *
  * LICENSE:
  * Rng - Random number generator for PHP
  *
- * Copyright (c) 2015, Benjamin Carl
+ * Copyright (c) 2015 - 2016, Benjamin Carl
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -46,30 +46,30 @@ namespace Clickalicious\Rng;
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Generator
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 
-use Clickalicious\Rng\Exception;
-
 /**
- * Rng
+ * Rng.
  *
  * Random number generator for PHP with fallback mechanism implementation
  * based on current best practice.
  *
  * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Generator
+ *
  * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @copyright  2015 - 2016 Benjamin Carl
+ * @license    http://opensource.org/licenses/BSD-3-Clause BSD-2-Clause
+ *
  * @version    Git: $Id$
+ *
  * @link       https://github.com/clickalicious/Rng
  */
 class Generator
@@ -79,7 +79,6 @@ class Generator
      * Static to prevent double seeding.
      *
      * @var null
-     * @access protected
      */
     protected $seed;
 
@@ -88,7 +87,6 @@ class Generator
      * Used in OpenSSL random byte generator for example.
      *
      * @var bool
-     * @access protected
      */
     protected $crypto;
 
@@ -96,7 +94,6 @@ class Generator
      * The active mode. Default set by constructor.
      *
      * @var int
-     * @access protected
      */
     protected $mode;
 
@@ -104,23 +101,21 @@ class Generator
      * The valid modes for validation.
      *
      * @var array
-     * @access protected
      * @static
      */
-    protected static $validModes = array(
+    protected static $validModes = [
         self::MODE_PHP_DEFAULT,
         self::MODE_PHP_MERSENNE_TWISTER,
         self::MODE_MCRYPT,
-        self::MODE_OPEN_SSL
-    );
+        self::MODE_OPEN_SSL,
+    ];
 
     /**
      * PHP's default RNG
-     * (e.g. srand() + rand())
+     * (e.g. srand() + rand()).
      *
      * @var int
-     * @access public
-     * const
+     *
      * @see http://php.net/manual/de/function.srand.php
      *      http://php.net/manual/de/function.rand.php
      */
@@ -128,11 +123,10 @@ class Generator
 
     /**
      * Mersenne Twister Mode
-     * (e.g. mt_srand() + mt_rand())
+     * (e.g. mt_srand() + mt_rand()).
      *
      * @var int
-     * @access public
-     * const
+     *
      * @see http://de.wikipedia.org/wiki/Mersenne-Twister
      *      http://php.net/manual/de/function.mt-srand.php
      *      http://php.net/manual/de/function.mt-rand.php
@@ -143,8 +137,7 @@ class Generator
      * MCRYPT based PHP /dev/urandom based PRNG implementation.
      *
      * @var int
-     * @access public
-     * const
+     *
      * @see http://php.net/manual/de/intro.mcrypt.php
      *      http://mcrypt.sourceforge.net/
      */
@@ -154,8 +147,7 @@ class Generator
      * OpenSSL based PHP PRNG implementation.
      *
      * @var int
-     * @access public
-     * const
+     *
      * @see http://php.net/manual/de/function.openssl-random-pseudo-bytes.php
      */
     const MODE_OPEN_SSL = 8;
@@ -164,30 +156,45 @@ class Generator
      * Name of the extension "mcrypt" for better readability.
      *
      * @var string
-     * @access public
      * @const
      */
     const EXTENSION_MCRYPT = 'mcrypt';
 
+    /**
+     * Source for MCRYPT random bytes.
+     *
+     * @var int
+     */
+    const SOURCE_MCRYPT = self::MODE_MCRYPT;
+
+    /**
+     * Source for Open SSL random bytes.
+     *
+     * @var int
+     */
+    const SOURCE_OPEN_SSL = self::MODE_OPEN_SSL;
+
+    /*------------------------------------------------------------------------------------------------------------------
+    | INIT
+    +-----------------------------------------------------------------------------------------------------------------*/
 
     /**
      * Constructor.
      *
-     * @param int      $mode   The mode used for generating random numbers.
-     *                         Default is MCRYPT as the currently best practice for generating random numbers
-     * @param int|null $seed   The optional seed used for randomizer init
-     * @param bool     $crypto TRUE (default) to enable cryptographic crypto (pseudo) randomness
+     * @param int      $mode                Mode used for generating random numbers.
+     *                                      Default is MCRYPT as the currently best practice for generating random numbers
+     * @param int|null $seed                Optional seed used for randomizer init
+     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic crypto (pseudo) randomness
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
      */
     public function __construct(
-        $mode   = self::MODE_OPEN_SSL,
-        $seed   = null,
-        $crypto = true
+        $mode = self::MODE_OPEN_SSL,
+        $seed = null,
+        $cryptographicStrong = true
     ) {
         $this
-            ->crypto($crypto)
+            ->crypto($cryptographicStrong)
             ->mode($mode);
 
         // Only seed if seed passed -> no longer required (since PHP 4.2.0)
@@ -196,6 +203,10 @@ class Generator
         }
     }
 
+    /*------------------------------------------------------------------------------------------------------------------
+    | PUBLIC API
+    +-----------------------------------------------------------------------------------------------------------------*/
+
     /**
      * Generates and returns a (pseudo) random number.
      *
@@ -203,7 +214,7 @@ class Generator
      * @param int $rangeMaximum The maximum value of range
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     * 
      * @return int The generated (pseudo) random number
      */
     public function generate($rangeMinimum = 0, $rangeMaximum = PHP_INT_MAX)
@@ -223,6 +234,7 @@ class Generator
                 break;
 
             case self::MODE_PHP_DEFAULT:
+            default:
                 $randomValue = $this->rand($rangeMinimum, $rangeMaximum);
                 break;
         }
@@ -234,14 +246,54 @@ class Generator
      * Generate the seed from microtime.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return int The seed value
      */
     public function generateSeed()
     {
-        list ($usec, $sec) = explode(' ', microtime());
-        return (int)($sec + strrev($usec * 1000000)) + 13;
+        list($usec, $sec) = explode(' ', microtime());
+
+        return (int) ($sec + strrev($usec * 1000000)) + 13;
     }
+
+    /**
+     * Returns random bytes secure for cryptographic context.
+     *
+     * @param int  $numberOfBytes       Number of bytes to read and return.
+     * @param int  $source              Source of random bytes.
+     * @param bool $cryptographicStrong TRUE (default) to enable cryptographic crypto (pseudo) randomness.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     *
+     * @return string Random bytes
+     */
+    public function getRandomBytes(
+        $numberOfBytes = PHP_INT_MAX,
+        $source = null,
+        $cryptographicStrong = true
+    ) {
+        switch ($source) {
+
+            case self::MODE_OPEN_SSL:
+                $randomBytes = $this->getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong);
+                break;
+
+            case self::MODE_MCRYPT:
+                $randomBytes = $this->getRandomBytesFromMcrypt($numberOfBytes);
+                break;
+
+            default:
+                // http://php.net/manual/de/function.random-bytes.php - POLYFILL used for PHP < 7
+                $randomBytes = random_bytes($numberOfBytes);
+                break;
+        }
+
+        return $randomBytes;
+    }
+
+    /*------------------------------------------------------------------------------------------------------------------
+    | INTERNAL API
+    +-----------------------------------------------------------------------------------------------------------------*/
 
     /**
      * "rand" based randomize.
@@ -250,7 +302,7 @@ class Generator
      * @param int $rangeMaximum The maximum range border for randomizer
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access protected
+     *
      * @return int From *closed* interval [$min, $max]
      */
     protected function rand($rangeMinimum, $rangeMaximum)
@@ -265,7 +317,7 @@ class Generator
      * @param int $rangeMaximum The maximum range border for randomizer
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access protected
+     *
      * @return int From *closed* interval [$min, $max]
      */
     protected function mtRand($rangeMinimum, $rangeMaximum)
@@ -281,8 +333,9 @@ class Generator
      * @param int $source       The source of the random bytes (OpenSSL, MCrypt, ...)
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
+     *
      * @return int From *closed* interval [$min, $max]
-     * @access protected
+     *
      * @throws \Clickalicious\Rng\Exception
      */
     protected function genericRand(
@@ -325,15 +378,13 @@ class Generator
             if (PHP_INT_SIZE === 8) {
                 // 64-bit versions
                 list($higher, $lower) = array_values(unpack('N2', $bytes));
-                $val = $higher << 32 | $lower;
-
+                $val                  = $higher << 32 | $lower;
             } else {
                 // 32-bit versions
                 $val = unpack('Nint', $bytes);
             }
 
             $val = $val['int'] & PHP_INT_MAX;
-
         } while ($val > $ceiling);
 
         // In the unlikely case our sample is bigger than largest multiple, just do over until it’s not any more.
@@ -346,15 +397,17 @@ class Generator
      * Returns random bytes from MCrypt.
      *
      * @param int $numberOfBytes The number of bytes to read and return
+     * @param
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access protected
+     *
      * @return string The random bytes
+     *
      * @throws \Clickalicious\Rng\Exception
      */
-    protected function getRandomBytesFromOpenSSL($numberOfBytes, $cryptographic)
+    protected function getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong)
     {
-        return openssl_random_pseudo_bytes($numberOfBytes, $cryptographic);
+        return openssl_random_pseudo_bytes($numberOfBytes, $cryptographicStrong);
     }
 
     /**
@@ -363,8 +416,9 @@ class Generator
      * @param int $numberOfBytes The number of bytes to read and return
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access protected
+     *
      * @return string The random bytes
+     *
      * @throws \Clickalicious\Rng\Exception
      */
     protected function getRandomBytesFromMcrypt($numberOfBytes)
@@ -378,8 +432,9 @@ class Generator
      * @param int $mode The mode to check requirements for
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access protected
+     *
      * @return bool TRUE on success, otherwise FALSE
+     *
      * @throws \Clickalicious\Rng\Exception
      */
     protected function checkRequirements($mode)
@@ -416,8 +471,6 @@ class Generator
      * @param int $mode The mode to set
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
-     * @return void
      */
     public function setMode($mode)
     {
@@ -433,12 +486,13 @@ class Generator
      * @param int $mode The mode to set
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return $this Instance for chaining
      */
     public function mode($mode)
     {
         $this->setMode($mode);
+
         return $this;
     }
 
@@ -446,7 +500,7 @@ class Generator
      * Getter for mode.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return int The active mode
      */
     public function getMode()
@@ -460,11 +514,15 @@ class Generator
      * @param int $seed The seed value
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
-     * @return void
      */
     public function setSeed($seed)
     {
+        if (is_int($seed) !== true) {
+            throw new Exception(
+                sprintf('The type of the seed value "%s" need to be int. You passed a(n) "%s".', $seed, gettype($seed))
+            );
+        }
+
         // We need to call different methods depending on chosen source
         switch ($this->getMode()) {
 
@@ -492,18 +550,13 @@ class Generator
      * @param int $seed The seed value
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return $this Instance for chaining
      */
     public function seed($seed)
     {
-        if (is_int($seed) !== true) {
-            throw new Exception(
-                sprintf('The type of the seed value "%s" need to be int. You passed a(n) "%s".', $seed, gettype($seed))
-            );
-        }
-
         $this->setSeed($seed);
+
         return $this;
     }
 
@@ -511,7 +564,7 @@ class Generator
      * Getter for seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return int|null The seed value if set, otherwise FALSE
      */
     public function getSeed()
@@ -525,8 +578,6 @@ class Generator
      * @param bool $crypto TRUE to set cryptographic flag, FALSE to disable
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
-     * @return void
      */
     protected function setCrypto($crypto)
     {
@@ -539,12 +590,13 @@ class Generator
      * @param bool $crypto TRUE to set cryptographic flag, FALSE to disable
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return $this Instance for chaining
      */
     protected function crypto($crypto)
     {
         $this->setCrypto($crypto);
+
         return $this;
     }
 
@@ -552,7 +604,7 @@ class Generator
      * Getter for crypto.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @access public
+     *
      * @return bool|null The crypto flag if set, otherwise NULL
      */
     protected function getCrypto()

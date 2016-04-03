@@ -70,6 +70,7 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 - [x] with integrated polyfill
 - [ ] Security check
 
+[![Throughput Graph](https://graphs.waffle.io/clickalicious/Rng/throughput.svg)](https://waffle.io/clickalicious/Rng/metrics)
 
 ## Security Issues
 

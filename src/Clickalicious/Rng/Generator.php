@@ -181,10 +181,10 @@ class Generator
     /**
      * Constructor.
      *
-     * @param int      $mode                Mode used for generating random numbers.
-     *                                      Default is MCRYPT as the currently best practice for generating random numbers
-     * @param int|null $seed                Optional seed used for randomizer init
-     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo) randomness
+     * @param int  $mode                Mode used for generating random numbers.
+     *                                  Default is MCRYPT as the currently best practice for generating random numbers
+     * @param int  $seed                Optional seed used for randomizer init
+     * @param bool $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo) randomness
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */

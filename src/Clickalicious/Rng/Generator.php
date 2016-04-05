@@ -88,7 +88,7 @@ class Generator
      *
      * @var bool
      */
-    protected $crypto;
+    protected $cryptographicStrong;
 
     /**
      * The active mode. Default set by constructor.
@@ -184,7 +184,7 @@ class Generator
      * @param int      $mode                Mode used for generating random numbers.
      *                                      Default is MCRYPT as the currently best practice for generating random numbers
      * @param int|null $seed                Optional seed used for randomizer init
-     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic crypto (pseudo) randomness
+     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo) randomness
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */
@@ -194,7 +194,7 @@ class Generator
         $cryptographicStrong = true
     ) {
         $this
-            ->crypto($cryptographicStrong)
+            ->cryptographicStrong($cryptographicStrong)
             ->mode($mode);
 
         // Only seed if seed passed -> no longer required (since PHP 4.2.0)
@@ -261,7 +261,7 @@ class Generator
      *
      * @param int  $numberOfBytes       Number of bytes to read and return.
      * @param int  $source              Source of random bytes.
-     * @param bool $cryptographicStrong TRUE (default) to enable cryptographic crypto (pseudo) randomness.
+     * @param bool $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo) randomness.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
@@ -360,7 +360,7 @@ class Generator
 
                 case self::MODE_OPEN_SSL:
                 default:
-                    $bytes = $this->getRandomBytesFromOpenSSL(PHP_INT_SIZE, $this->getCrypto());
+                    $bytes = $this->getRandomBytesFromOpenSSL(PHP_INT_SIZE, $this->getCryptographicStrong());
                     break;
             }
 
@@ -573,42 +573,42 @@ class Generator
     }
 
     /**
-     * Setter for crypto.
+     * Setter for cryptographicStrong.
      *
-     * @param bool $crypto TRUE to set cryptographic flag, FALSE to disable
+     * @param bool $cryptographicStrong TRUE to set cryptographic flag, FALSE to disable
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */
-    protected function setCrypto($crypto)
+    protected function setCryptographicStrong($cryptographicStrong)
     {
-        $this->crypto = $crypto;
+        $this->cryptographicStrong = $cryptographicStrong;
     }
 
     /**
-     * Setter for crypto.
+     * Setter for cryptographicStrong.
      *
-     * @param bool $crypto TRUE to set cryptographic flag, FALSE to disable
+     * @param bool $cryptographicStrong TRUE to set cryptographic flag, FALSE to disable
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
      * @return $this Instance for chaining
      */
-    protected function crypto($crypto)
+    protected function cryptographicStrong($cryptographicStrong)
     {
-        $this->setCrypto($crypto);
+        $this->setCryptographicStrong($cryptographicStrong);
 
         return $this;
     }
 
     /**
-     * Getter for crypto.
+     * Getter for cryptographicStrong.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
-     * @return bool|null The crypto flag if set, otherwise NULL
+     * @return bool|null The cryptographicStrong flag if set, otherwise NULL
      */
-    protected function getCrypto()
+    protected function getCryptographicStrong()
     {
-        return $this->crypto;
+        return $this->cryptographicStrong;
     }
 }

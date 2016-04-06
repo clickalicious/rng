@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/rng",
-  "description": "Rng - The random number generator for PHP",
+  "description": "Rng - The secure random number generator (PRNG) for PHP",
   "authors": [
     {
       "name": "Benjamin Carl",
@@ -9,6 +9,8 @@
       "role": "Developer"
     }
   ],
+  "minimum-stability": "stable",
+  "prefer-stable": true,
   "require": {
     "php": ">=5.4.0",
     "paragonie/random_compat": "~2.0.2"

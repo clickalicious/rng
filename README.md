@@ -1,5 +1,6 @@
 <img src="https://avatars2.githubusercontent.com/u/514566?v=3&u=4615dfc4970d93dea5d3eaf996b7903ee6e24e20&s=140" align="right" />
 ---
+
 ![Logo of Rng](docs/logo-large.png)  
 
 The **secure random number generator** `PRNG` for PHP
@@ -31,8 +32,6 @@ The **secure random number generator** `PRNG` for PHP
  - Stable, clean + well documented code
  - Unit-tested with a good coverage
 
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795/big.png)](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795)
-
 
 ## Example
 
@@ -49,6 +48,12 @@ $generator = new Clickalicious\Rng\Generator(Clickalicious\Rng\Generator::MODE_M
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
+
+### Visualization
+
+You can ...
+
+![Logo of Rng](docs/visualization.png)  
 
 
 ## Requirements

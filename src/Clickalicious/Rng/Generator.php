@@ -49,7 +49,7 @@ namespace Clickalicious\Rng;
  *
  * @author     Benjamin Carl <opensource@clickalicious.de>
  * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
  * @version    Git: $Id$
  *
@@ -66,7 +66,7 @@ namespace Clickalicious\Rng;
  *
  * @author     Benjamin Carl <opensource@clickalicious.de>
  * @copyright  2015 - 2016 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-2-Clause
+ * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
  * @version    Git: $Id$
  *

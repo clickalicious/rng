@@ -1,11 +1,12 @@
 <img src="https://avatars2.githubusercontent.com/u/514566?v=3&u=4615dfc4970d93dea5d3eaf996b7903ee6e24e20&s=140" align="right" />
 ---
 ![Logo of Rng](docs/logo-large.png)  
-`RNG` (random number generator) for PHP  
 
-| [![Build Status](https://travis-ci.org/clickalicious/Rng.svg?branch=master)](https://travis-ci.org/clickalicious/Rng) 	| [![Scrutinizer](https://img.shields.io/scrutinizer/g/clickalicious/Rng.svg)](https://scrutinizer-ci.com/g/clickalicious/Rng/) 	| [![clickalicious premium](https://img.shields.io/badge/clickalicious-premium-green.svg?style=flat)](https://www.clickalicious.de/) 	| [![Packagist](https://img.shields.io/packagist/l/clickalicious/Rng.svg?style=flat)](http://opensource.org/licenses/BSD-3-Clause) 	|
+The **secure random number generator** `PRNG` for PHP
+
+| [![Build Status](https://travis-ci.org/clickalicious/Rng.svg?branch=master)](https://travis-ci.org/clickalicious/Rng) 	| [![Scrutinizer](https://img.shields.io/scrutinizer/g/clickalicious/Rng.svg)](https://scrutinizer-ci.com/g/clickalicious/Rng/) 	| [![Code Coverage](https://scrutinizer-ci.com/g/clickalicious/Rng/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/clickalicious/Rng/?branch=master) 	| [![clickalicious premium](https://img.shields.io/badge/clickalicious-premium-green.svg?style=flat)](https://www.clickalicious.de/) 	|
 |---	|---	|---	|---	|
-| [![GitHub issues](https://img.shields.io/github/issues/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/Rng/issues) 	| [![Code Coverage](https://scrutinizer-ci.com/g/clickalicious/Rng/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/clickalicious/Rng/?branch=master)  	| [![GitHub release](https://img.shields.io/github/release/clickalicious/Rng.svg?style=flat)](https://github.com/clickalicious/Rng/releases) 	| [![GitHub stars](https://img.shields.io/github/stars/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/Rng/stargazers)  	|
+| [![GitHub release](https://img.shields.io/github/release/clickalicious/Rng.svg?style=flat)](https://github.com/clickalicious/Rng/releases) 	| [![Waffle.io](https://img.shields.io/waffle/label/clickalicious/Rng/in%20progress.svg)](https://waffle.io/clickalicious/Rng)  	| [![SensioLabsInsight](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795/mini.png)](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795) 	| [![Packagist](https://img.shields.io/packagist/l/clickalicious/Rng.svg?style=flat)](https://opensource.org/licenses/BSD-3-Clause)  	|
 
 
 ## Table of Contents
@@ -22,13 +23,16 @@
 
 ## Features
 
- - State of the Art & best practice PRNG implementation (64-Bit support)
- - Additional nice OOP abstraction to PHP core functionality
- - Stable + High-Quality
- - Clean, tested & well documented code
- - PHP 7.0 + HHVM ready!
+ - High performance (developed using a profiler)
+ - Lightweight and high-quality codebase (following `PSR-0,1,4`)
+ - Secure `PRNG` implementation (64-Bit support)
+ - OOP facade to PHP core functionality
+ - PHP 7.0 & HHVM ready
+ - Stable, clean + well documented code
+ - Unit-tested with a good coverage
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795/big.png)](https://insight.sensiolabs.com/projects/29d1f47a-0deb-47f0-9642-671bebb04795)
+
 
 ## Example
 
@@ -64,17 +68,18 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 
 ## Roadmap
 
-- [x] Focus on stable version 1.0.0
-- [x] with more tests
-- [x] with better visualization
-- [x] with integrated polyfill
-- [ ] Security check
+- [x] Target stable release 1.0.0
+- [ ] >= 90% test coverage
+- [x] Better visualization
+- [x] Integrate polyfill
+- [ ] Security check through 3rd-Party (Please get in contact with me)
 
 [![Throughput Graph](https://graphs.waffle.io/clickalicious/Rng/throughput.svg)](https://waffle.io/clickalicious/Rng/metrics)
 
+
 ## Security Issues
 
-If you encounter a (potential) security issue don't hesitate to get in contact with me `opensource@clickalicious.de` before releasing it to the public. So i get a chance to prepare and release an update before the issue is getting shared. Thank you!
+If you encounter a (potential) security issue don't hesitate to get in contact with us `opensource@clickalicious.de` before releasing it to the public. So i get a chance to prepare and release an update before the issue is getting shared. Thank you!
 
 
 ## Participate & Share
@@ -91,6 +96,3 @@ Thanks to our sponsors and supporters:
 | JetBrains | Navicat |
 |---|---|
 | <a href="https://www.jetbrains.com/phpstorm/" title="PHP IDE :: JetBrains PhpStorm" target="_blank"><img src="https://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png" height="55"></img></a> | <a href="http://www.navicat.com/" title="Navicat GUI - DB GUI-Admin-Tool for MySQL, MariaDB, SQL Server, SQLite, Oracle & PostgreSQL" target="_blank"><img src="http://upload.wikimedia.org/wikipedia/en/9/90/PremiumSoft_Navicat_Premium_Logo.png" height="55" /></a>  |
-
-#### Copyright
-<div>Icons made by <a href="http://www.flaticon.com/authors/egor-rumyantsev" title="Egor Rumyantsev">Egor Rumyantsev</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>

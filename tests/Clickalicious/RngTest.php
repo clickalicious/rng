@@ -44,15 +44,15 @@ namespace Clickalicious;
  *
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 
 use Clickalicious\Rng\Generator;
@@ -62,15 +62,15 @@ use Clickalicious\Rng\Generator;
  *
  * Unit tests for client functionality.
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-2-Clause BSD-2-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 class RngTest extends \PHPUnit_Framework_TestCase
 {
@@ -248,7 +248,7 @@ class RngTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInternalType('int', $seed);
     }
-    
+
     /**
      * Test: Test generating instance with seed.
      *
@@ -318,7 +318,7 @@ class RngTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateRandomBytesByModePhpInternalOnPublicApi()
     {
-        $generator   = new Generator();
+        $generator = new Generator();
 
         $randomBytes = $generator->getRandomBytes(4096);
         $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
@@ -331,7 +331,7 @@ class RngTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateRandomBytesByModePhpMcryptOnPublicApi()
     {
-        $generator   = new Generator();
+        $generator = new Generator();
 
         $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_MCRYPT);
         $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
@@ -344,7 +344,7 @@ class RngTest extends \PHPUnit_Framework_TestCase
      */
     public function testGenerateRandomBytesByModeOpenSslOnPublicApi()
     {
-        $generator   = new Generator();
+        $generator = new Generator();
 
         $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_OPEN_SSL);
         $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');

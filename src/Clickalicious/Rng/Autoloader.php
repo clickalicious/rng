@@ -125,7 +125,7 @@ class Autoloader
      *
      * @param string $class The fully-qualified class name.
      *
-     * @return mixed The mapped file name on success, or boolean false on
+     * @return string|false The mapped file name on success, or boolean false on
      *               failure.
      */
     public function loadClass($class)
@@ -165,7 +165,7 @@ class Autoloader
      * @param string $prefix        The namespace prefix.
      * @param string $relativeClass The relative class name.
      *
-     * @return mixed Boolean false if no mapped file can be loaded, or the
+     * @return false|string Boolean false if no mapped file can be loaded, or the
      *               name of the mapped file that was loaded.
      */
     protected function loadMappedFile($prefix, $relativeClass)

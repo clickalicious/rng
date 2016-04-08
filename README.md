@@ -35,14 +35,14 @@ The **secure random number generator** `PRNG` for PHP
 
 ## Example
 
-Generate random number between 1 and 10 with OpenSSL random bytes (default)
+Generate random number between 1 and 10 with `OpenSSL` random bytes (default)
 ```php
 $generator = new Clickalicious\Rng\Generator();
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
-Generate random number between 1 and 10 with MCrypt random bytes
+Generate random number between 1 and 10 with `MCrypt` random bytes
 ```php
 $generator = new Clickalicious\Rng\Generator(Clickalicious\Rng\Generator::MODE_MCRYPT);
 $number    = $generator->generate(1, 10);
@@ -51,7 +51,7 @@ echo $number;
 
 ### Visualization
 
-You can ...
+You can create a visualization of randomization (as you can see below but larger size) through `Visual.php` (the file is located in root).
 
 ![Logo of Rng](docs/visualization.png)  
 
@@ -101,3 +101,7 @@ Thanks to our sponsors and supporters:
 | JetBrains | Navicat |
 |---|---|
 | <a href="https://www.jetbrains.com/phpstorm/" title="PHP IDE :: JetBrains PhpStorm" target="_blank"><img src="https://resources.jetbrains.com/assets/media/open-graph/jetbrains_250x250.png" height="55"></img></a> | <a href="http://www.navicat.com/" title="Navicat GUI - DB GUI-Admin-Tool for MySQL, MariaDB, SQL Server, SQLite, Oracle & PostgreSQL" target="_blank"><img src="http://upload.wikimedia.org/wikipedia/en/9/90/PremiumSoft_Navicat_Premium_Logo.png" height="55" /></a>  |
+
+
+###### Copyright
+Icons made by <a href="http://www.flaticon.com/authors/alessio-atzeni" title="Alessio Atzeni">Alessio Atzeni</a> licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a>

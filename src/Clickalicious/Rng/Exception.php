@@ -45,15 +45,15 @@ namespace Clickalicious\Rng;
  *
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 
 /**
@@ -61,17 +61,17 @@ namespace Clickalicious\Rng;
  *
  * Exception of Rng package.
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 class Exception extends \RuntimeException
 {
-    // Just for namespace issues
+    // Just for namespace use
 }

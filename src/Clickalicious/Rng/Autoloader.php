@@ -45,15 +45,15 @@ namespace Clickalicious\Rng;
  *
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 
 /**
@@ -61,15 +61,15 @@ namespace Clickalicious\Rng;
  *
  * Autoloader.php - Autoloader of Rng.
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
 class Autoloader
 {
@@ -92,12 +92,12 @@ class Autoloader
     /**
      * Adds a base directory for a namespace prefix.
      *
-     * @param string $prefix   The namespace prefix.
-     * @param string $baseDir  A base directory for class files in the
-     *                         namespace.
-     * @param bool   $prepend  If true, prepend the base directory to the stack
-     *                         instead of appending it; this causes it to be searched first rather
-     *                         than last.
+     * @param string $prefix  The namespace prefix.
+     * @param string $baseDir A base directory for class files in the
+     *                        namespace.
+     * @param bool   $prepend If true, prepend the base directory to the stack
+     *                        instead of appending it; this causes it to be searched first rather
+     *                        than last.
      */
     public function addNamespace($prefix, $baseDir, $prepend = false)
     {
@@ -177,13 +177,12 @@ class Autoloader
 
         // look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $baseDir) {
-
-            // replace the namespace prefix with the base directory,
-            // replace namespace separators with directory separators
-            // in the relative class name, append with .php
-            $file = $baseDir
-                .str_replace('\\', '/', $relativeClass)
-                .'.php';
+            /*
+             replace the namespace prefix with the base directory,
+             replace namespace separators with directory separators
+             in the relative class name, append with .php
+            */
+            $file = $baseDir.str_replace('\\', '/', $relativeClass).'.php';
 
             // if the mapped file exists, require it
             if ($this->requireFile($file)) {
@@ -207,7 +206,6 @@ class Autoloader
     {
         if (true === $status = file_exists($file)) {
             include_once $file;
-
         }
 
         return $status;

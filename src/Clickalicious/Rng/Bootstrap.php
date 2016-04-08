@@ -45,18 +45,16 @@ namespace Clickalicious\Rng;
  *
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
- * @category   Clickalicious
+ * @category  Clickalicious
  *
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 - 2016 Benjamin Carl
- * @license    https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 - 2016 Benjamin Carl
+ * @license   https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  *
- * @version    Git: $Id$
+ * @version   Git: $Id$
  *
- * @link       https://github.com/clickalicious/Rng
+ * @link      https://github.com/clickalicious/Rng
  */
-
-// Include autoloader
 require_once 'Autoloader.php';
 
 /**
@@ -112,9 +110,6 @@ $composerRunning
 
 // Force reporting of all errors ...
 error_reporting(-1);
-
-// Retrieve SAPI PHP is running
-$sapi = strtolower(php_sapi_name());
 
 // Init autoloading
 $loader = new Autoloader();

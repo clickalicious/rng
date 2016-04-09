@@ -28,6 +28,7 @@
                 <directory>../vendor</directory>
                 <directory>../src/Clickalicious/Rng/Autoloader.php</directory>
                 <directory>../src/Clickalicious/Rng/Bootstrap.php</directory>
+                <directory>../src/Clickalicious/Rng/Exception.php</directory>
             </exclude>
         </whitelist>
     </filter>

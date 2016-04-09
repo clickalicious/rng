@@ -364,6 +364,7 @@ class Generator
                     break;
             }
 
+            /* @codeCoverageIgnoreStart */
             // Check for error
             if (false === $bytes || PHP_INT_SIZE !== strlen($bytes)) {
                 throw new Exception(
@@ -374,6 +375,7 @@ class Generator
                     )
                 );
             }
+            /* @codeCoverageIgnoreEnd */
 
             if (PHP_INT_SIZE === 8) {
                 // 64-bit versions
@@ -440,9 +442,9 @@ class Generator
      */
     protected function checkRequirements($mode)
     {
-        if (in_array($mode, self::$validModes, true) !== true) {
+        if (true !== in_array($mode, self::$validModes, true)) {
             throw new Exception(
-                sprintf('Unsupported mode "%s"', $mode)
+                sprintf('Mode "%s" not supported. Supported: "%s"', $mode, var_export(self::$validModes, true))
             );
         }
 
@@ -476,7 +478,7 @@ class Generator
     public function setMode($mode)
     {
         // Check for requirements depending on mode
-        if ($this->checkRequirements($mode) === true) {
+        if (true === $this->checkRequirements($mode)) {
             $this->mode = $mode;
         }
     }

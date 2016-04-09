@@ -35,14 +35,14 @@ The **secure random number generator** `PRNG` for PHP
 
 ## Example
 
-Generate random number between 1 and 10 with `OpenSSL` random bytes (default)
+Generate random number between 1 and 10 with `OpenSSL` random bytes (library default):
 ```php
 $generator = new Clickalicious\Rng\Generator();
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
-Generate random number between 1 and 10 with `MCrypt` random bytes
+Generate random number between 1 and 10 with `MCrypt` random bytes:
 ```php
 $generator = new Clickalicious\Rng\Generator(Clickalicious\Rng\Generator::MODE_MCRYPT);
 $number    = $generator->generate(1, 10);
@@ -58,12 +58,12 @@ You can create a visualization of randomization (as you can see below but larger
 
 ## Requirements
 
- - PHP >= 5.4 (compatible up to version 5.6 as well as 7.x and HHVM)
+ - `PHP >= 5.4` (compatible up to version 5.6 as well as 7.x and HHVM)
 
 
 ## Philosophy
 
-This library provides a State of the Art PRNG implementation for PHP as well as an really nice abstraction to PHP's existing core functionality. No seeding required but good seed generator built in.
+This library provides a state of the art `PRNG` (**P**seudo **R**andom **N**umber **G**enerator) implementation to generate secure `Pseudo Random Numbers` with PHP. The generation is either based on `Open SSL` or `MCrypt` or as fallback on PHP's internal functionality. The library provides a good `Seed generator` on puplic API.
 
 
 ## Versioning
@@ -73,8 +73,8 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 
 ## Roadmap
 
-- [x] Target stable release 1.0.0
-- [ ] >= 90% test coverage
+- [x] Target stable release `1.0.0`
+- [ ] `>= 90%` test coverage
 - [x] Better visualization
 - [x] Integrate polyfill
 - [ ] Security check through 3rd-Party (Please get in contact with me)

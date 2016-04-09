@@ -130,32 +130,31 @@ class Autoloader
      */
     public function loadClass($class)
     {
-        // the current namespace prefix
+        // The current namespace prefix
         $prefix = $class;
 
-        // work backwards through the namespace names of the fully-qualified
+        // Work backwards through the namespace names of the fully-qualified
         // class name to find a mapped file name
         while (false !== $pos = strrpos($prefix, '\\')) {
 
-            // retain the trailing namespace separator in the prefix
+            // Retain the trailing namespace separator in the prefix
             $prefix = substr($class, 0, $pos + 1);
 
-            // the rest is the relative class name
+            // The rest is the relative class name
             $relativeClass = substr($class, $pos + 1);
 
-            // try to load a mapped file for the prefix and relative class
+            // Try to load a mapped file for the prefix and relative class
             $mappedFile = $this->loadMappedFile($prefix, $relativeClass);
 
-            if ($mappedFile) {
+            if (false !== $mappedFile) {
                 return $mappedFile;
             }
 
-            // remove the trailing namespace separator for the next iteration
-            // of strrpos()
+            // Remove the trailing namespace separator for the next iteration of strrpos()
             $prefix = rtrim($prefix, '\\');
         }
 
-        // never found a mapped file
+        // Never found a mapped file
         return false;
     }
 
@@ -170,12 +169,12 @@ class Autoloader
      */
     protected function loadMappedFile($prefix, $relativeClass)
     {
-        // are there any base directories for this namespace prefix?
+        // Are there any base directories for this namespace prefix?
         if (false === isset($this->prefixes[$prefix])) {
             return false;
         }
 
-        // look through base directories for this namespace prefix
+        // Look through base directories for this namespace prefix
         foreach ($this->prefixes[$prefix] as $baseDir) {
             /*
              replace the namespace prefix with the base directory,
@@ -184,14 +183,14 @@ class Autoloader
             */
             $file = $baseDir.str_replace('\\', '/', $relativeClass).'.php';
 
-            // if the mapped file exists, require it
+            // If the mapped file exists, require it
             if ($this->requireFile($file)) {
                 // yes, we're done
                 return $file;
             }
         }
 
-        // never found it
+        // Never found it
         return false;
     }
 

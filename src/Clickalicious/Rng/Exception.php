@@ -73,5 +73,5 @@ namespace Clickalicious\Rng;
  */
 class Exception extends \RuntimeException
 {
-    // Just for namespace use
+    // Intentionally left empty
 }

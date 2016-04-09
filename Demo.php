@@ -1,8 +1,9 @@
 <?php
+
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * Rng
+ * Rng.
  *
  * Demo.php - Random number generator for PHP
  * Fallback mechanism implementation based on current best practice.
@@ -43,14 +44,15 @@
  *
  * Please feel free to contact us via e-mail: opensource@clickalicious.de
  *
- * @category   Clickalicious
- * @package    Clickalicious_Rng
- * @subpackage Clickalicious_Rng_Generator
- * @author     Benjamin Carl <opensource@clickalicious.de>
- * @copyright  2015 Benjamin Carl
- * @license    http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @version    Git: $Id$
- * @link       https://github.com/clickalicious/Rng
+ * @category  Clickalicious
+ *
+ * @author    Benjamin Carl <opensource@clickalicious.de>
+ * @copyright 2015 Benjamin Carl
+ * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
+ *
+ * @version   Git: $Id$
+ *
+ * @link      https://github.com/clickalicious/Rng
  */
 
 /**
@@ -60,7 +62,7 @@
  */
 require_once 'src/Clickalicious/Rng/Bootstrap.php';
 
-/**
+/*
  * Default random number generating easily.
  * Generate a random number with best rng available
  * between 1 and 10:
@@ -70,7 +72,7 @@ $number    = $generator->generate(1, 10);
 echo $number.PHP_EOL;
 
 
-/**
+/*
  * Random number generating easily.
  * Generate a random number with PHP's default rng
  * between 1 and 10:
@@ -80,7 +82,7 @@ $number    = $generator->generate(1, 10);
 echo $number.PHP_EOL;
 
 
-/**
+/*
  * Random number generating easily.
  * Generate a random number with PHP's mersenne twister rng
  * between 1 and 10:

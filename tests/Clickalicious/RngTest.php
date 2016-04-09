@@ -349,4 +349,27 @@ class RngTest extends \PHPUnit_Framework_TestCase
         $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_OPEN_SSL);
         $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
     }
+
+    /**
+     * Test: Test setting an invalid mode.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     * @expectedException \Clickalicious\Rng\Exception
+     */
+    public function testTryToSetInvalidEncryptionMode()
+    {
+        $generator = new Generator();
+        $generator->setMode(4096);
+    }
+
+    /**
+     * Test: Test setting a seed value on init.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testPassingSeedToConstructor()
+    {
+        $generator = new Generator(Generator::MODE_OPEN_SSL, time());
+        $this->assertInstanceOf('Clickalicious\Rng\Generator', $generator);
+    }
 }

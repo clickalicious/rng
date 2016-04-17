@@ -400,7 +400,7 @@ class Generator
      *
      * @param int $numberOfBytes The number of bytes to read and return
      * @param
-     * @param boolean $cryptographicStrong
+     * @param bool $cryptographicStrong
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
@@ -608,7 +608,7 @@ class Generator
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
-     * @return boolean The cryptographicStrong flag if set, otherwise NULL
+     * @return bool The cryptographicStrong flag if set, otherwise NULL
      */
     protected function getCryptographicStrong()
     {

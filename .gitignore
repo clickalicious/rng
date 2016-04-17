@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 # Project specific
 __*/
 docs/coverage/*
-bin/*
+
 
 # Common
 *.bak

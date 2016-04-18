@@ -398,8 +398,8 @@ class Generator
     /**
      * Returns random bytes from MCrypt.
      *
-     * @param int     $numberOfBytes       Number of bytes to read and return
-     * @param boolean $cryptographicStrong TRUE to get cryptographic strong randomness
+     * @param int $numberOfBytes The number of bytes to read and return
+     * @param bool $cryptographicStrong
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *

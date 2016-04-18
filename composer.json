@@ -1,6 +1,7 @@
 {
   "name": "clickalicious/rng",
   "description": "Rng - The secure random number generator (PRNG) for PHP",
+  "type": "library",
   "authors": [
     {
       "name": "Benjamin Carl",
@@ -13,11 +14,11 @@
   "prefer-stable": true,
   "require": {
     "php": ">=5.4.0",
-    "paragonie/random_compat": "~2.0.2"
+    "paragonie/random_compat": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.8.24",
-    "symfony/var-dumper": "~2.8.4"
+    "phpunit/phpunit": "^4.8",
+    "symfony/var-dumper": "^2.8"
   },
   "autoload": {
     "psr-4": {
@@ -40,7 +41,8 @@
   "support": {
     "email": "opensource@clickalicious.de",
     "issues": "https://github.com/clickalicious/Rng/issues",
-    "wiki": "https://github.com/clickalicious/Rng/wiki"
+    "wiki": "https://github.com/clickalicious/Rng/wiki",
+    "tests": "https://clickalicious.github.io/Rng"
   },
   "config" : {
     "bin-dir" : "bin",

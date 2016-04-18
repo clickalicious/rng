@@ -7,7 +7,7 @@ namespace Clickalicious;
 /**
  * Rng.
  *
- * RngTest.php - Unit tests for rng functionality.
+ * GeneratorTest.php - Unit tests for RNG functionality.
  *
  * PHP versions 5.4
  *
@@ -72,7 +72,7 @@ use Clickalicious\Rng\Generator;
  *
  * @link      https://github.com/clickalicious/Rng
  */
-class RngTest extends \PHPUnit_Framework_TestCase
+class GeneratorTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test: Get instance.

@@ -41,7 +41,8 @@
   "support": {
     "email": "opensource@clickalicious.de",
     "issues": "https://github.com/clickalicious/Rng/issues",
-    "wiki": "https://github.com/clickalicious/Rng/wiki"
+    "wiki": "https://github.com/clickalicious/Rng/wiki",
+    "tests": "https://clickalicious.github.io/Rng"
   },
   "config" : {
     "bin-dir" : "bin",

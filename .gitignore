@@ -1,7 +1,7 @@
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 *.iml
-*.idea
+*.idea/
 
 ## File-based project format:
 *.ipr
@@ -41,7 +41,7 @@ $RECYCLE.BIN/
 # Project specific
 __*/
 docs/coverage/*
-
+bin/*
 
 # Common
 *.bak

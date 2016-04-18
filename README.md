@@ -20,7 +20,7 @@ The **secure random number generator** `PRNG` for PHP
 - [Roadmap](#roadmap)
 - [Security-Issues](#security-issues)  
 - [License »](LICENSE)  
- 
+
 
 ## Features
 

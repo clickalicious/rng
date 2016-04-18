@@ -214,7 +214,7 @@ class Generator
      * @param int $rangeMaximum The maximum value of range
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * 
+     *
      * @return int The generated (pseudo) random number
      */
     public function generate($rangeMinimum = 0, $rangeMaximum = PHP_INT_MAX)
@@ -398,9 +398,8 @@ class Generator
     /**
      * Returns random bytes from MCrypt.
      *
-     * @param int $numberOfBytes The number of bytes to read and return
-     * @param
-     * @param boolean $cryptographicStrong
+     * @param int     $numberOfBytes       Number of bytes to read and return
+     * @param boolean $cryptographicStrong TRUE to get cryptographic strong randomness
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
@@ -608,7 +607,7 @@ class Generator
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
-     * @return boolean The cryptographicStrong flag if set, otherwise NULL
+     * @return bool The cryptographicStrong flag if set, otherwise NULL
      */
     protected function getCryptographicStrong()
     {

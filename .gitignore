@@ -1,10 +1,6 @@
 ### PhpStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
 *.iml
-<<<<<<< HEAD
-=======
-*.idea/
->>>>>>> d6eb12312b841f4dfe7ac85f8812f2d7320b2904
 
 ## File-based project format:
 *.ipr

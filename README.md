@@ -3,7 +3,7 @@
 
 ![Logo of Rng](docs/logo-large.png)  
 
-The **secure random number generator** `PRNG` for PHP
+The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 | [![Build Status](https://travis-ci.org/clickalicious/Rng.svg?branch=master)](https://travis-ci.org/clickalicious/Rng) 	| [![Scrutinizer](https://img.shields.io/scrutinizer/g/clickalicious/Rng.svg)](https://scrutinizer-ci.com/g/clickalicious/Rng/) 	| [![Code Coverage](https://scrutinizer-ci.com/g/clickalicious/Rng/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/clickalicious/Rng/?branch=master) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://www.clickalicious.de/) 	|
 |---	|---	|---	|---	|
@@ -25,7 +25,7 @@ The **secure random number generator** `PRNG` for PHP
 ## Features
 
  - High performance (developed using a profiler)
- - Lightweight and high-quality codebase (following `PSR-0,1,4`)
+ - Lightweight and high-quality codebase (following PSR standards e.g. `PSR-0,1,4`)
  - Secure `PRNG` implementation (64-Bit support)
  - OOP facade to PHP core functionality
  - PHP 7.0 & HHVM ready
@@ -63,7 +63,9 @@ You can create a visualization of randomization (as you can see below but larger
 
 ## Philosophy
 
-This library provides a state of the art `PRNG` (**P**seudo **R**andom **N**umber **G**enerator) implementation to generate secure `Pseudo Random Numbers` with PHP. The generation is either based on `Open SSL` or `MCrypt` or as fallback on PHP's internal functionality. The library provides a good `Seed generator` on puplic API.
+This library provides a state of the art `PRNG` (**P**seudo **R**andom **N**umber **G**enerator) implementation to generate secure `Pseudo Random Numbers` with PHP. The generation is either based on `Open SSL` or `MCrypt` or as fallback on PHP's internal functionality. The library also provides a very good `Seed generator` on puplic API. If you are interested in the difference between real and pseduo randomness then you could start at [https://www.random.org/randomness/](https://www.random.org/randomness/ "https://www.random.org/randomness/").
+
+[![Scott Adams](https://qph.is.quoracdn.net/main-qimg-1eb4e01051c9e28611ff9e9be84bef5d?convert_to_webp=true)](http://dilbert.com/strip/2001-10-25 "Copyright Universal Uclick / Scott Adams")
 
 
 ## Versioning

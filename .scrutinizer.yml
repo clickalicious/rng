@@ -84,7 +84,6 @@ checks:
         single_namespace_per_use: true
         security_vulnerabilities: true
         require_php_tag_first: true
-
         psr2_switch_declaration: true
         psr2_class_declaration: false
         remove_extra_empty_lines: true
@@ -137,7 +136,7 @@ coding_style:
     php:
         spaces:
             other:
-                after_type_cast: false
+                after_type_cast: true
         braces:
             classes_functions:
                 class: new-line

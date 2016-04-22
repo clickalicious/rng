@@ -233,7 +233,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreatingInstanceByInvalidModeException()
     {
-        $generator = new Generator(PHP_INT_MAX);
+        new Generator(PHP_INT_MAX);
     }
 
     /**

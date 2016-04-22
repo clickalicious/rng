@@ -64,7 +64,7 @@ require_once 'Autoloader.php';
  *
  * @return bool TRUE if composer is active, otherwise FALSE
  */
-function composer_running()
+function composerRunning()
 {
     $result  = false;
     $classes = get_declared_classes();
@@ -93,20 +93,15 @@ $root = realpath(CLICKALICIOUS_RNG_BASE_PATH.'../');
 // Check for composer existence
 if (true === $composerExist = $composerRunning = file_exists($root.'/vendor/autoload.php')) {
     include_once $root.'/vendor/autoload.php';
+
 } else {
-    $composerExist = $composerRunning = composer_running();
+    $composerExist = $composerRunning = composerRunning();
 }
 
 // No need to double detect and so on ...
-define(
-'CLICKALICIOUS_RNG_COMPOSER_EXISTS',
-$composerExist
-);
+define('CLICKALICIOUS_RNG_COMPOSER_EXISTS', $composerExist);
 
-define(
-'CLICKALICIOUS_RNG_COMPOSER_RUNNING',
-$composerRunning
-);
+define('CLICKALICIOUS_RNG_COMPOSER_RUNNING', $composerRunning);
 
 // Force reporting of all errors ...
 error_reporting(-1);

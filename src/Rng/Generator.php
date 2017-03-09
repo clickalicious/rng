@@ -68,7 +68,6 @@ class Generator
     protected static $validModes = [
         self::MODE_PHP_DEFAULT,
         self::MODE_PHP_MERSENNE_TWISTER,
-        self::MODE_MCRYPT,
         self::MODE_OPEN_SSL,
     ];
 
@@ -102,6 +101,7 @@ class Generator
      *
      * @see http://php.net/manual/de/intro.mcrypt.php
      *      http://mcrypt.sourceforge.net/
+     * @deprecated
      */
     const MODE_MCRYPT = 4;
 
@@ -113,21 +113,6 @@ class Generator
      * @see http://php.net/manual/de/function.openssl-random-pseudo-bytes.php
      */
     const MODE_OPEN_SSL = 8;
-
-    /**
-     * Name of the extension "mcrypt" for better readability.
-     *
-     * @var string
-     * @const
-     */
-    const EXTENSION_MCRYPT = 'mcrypt';
-
-    /**
-     * Source for MCRYPT random bytes.
-     *
-     * @var int
-     */
-    const SOURCE_MCRYPT = self::MODE_MCRYPT;
 
     /**
      * Source for Open SSL random bytes.
@@ -144,7 +129,7 @@ class Generator
      * Constructor.
      *
      * @param int      $mode                Mode used for generating random numbers.
-     *                                      Default is MCRYPT as the currently best practice for generating random
+     *                                      Default is OPEN_SSL as the currently best practice for generating random
      *                                      numbers
      * @param int|null $seed                Optional seed used for randomizer init
      * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo)
@@ -187,10 +172,6 @@ class Generator
 
             case self::MODE_OPEN_SSL:
                 $randomValue = $this->genericRand($rangeMinimum, $rangeMaximum, self::MODE_OPEN_SSL);
-                break;
-
-            case self::MODE_MCRYPT:
-                $randomValue = $this->genericRand($rangeMinimum, $rangeMaximum, self::MODE_MCRYPT);
                 break;
 
             case self::MODE_PHP_MERSENNE_TWISTER:
@@ -243,10 +224,6 @@ class Generator
                 $randomBytes = $this->getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong);
                 break;
 
-            case self::MODE_MCRYPT:
-                $randomBytes = $this->getRandomBytesFromMcrypt($numberOfBytes);
-                break;
-
             default:
                 // http://php.net/manual/de/function.random-bytes.php - POLYFILL used for PHP < 7
                 $randomBytes = random_bytes($numberOfBytes);
@@ -291,22 +268,22 @@ class Generator
     }
 
     /**
-     * "mcrypt" based equivalent to rand & mt_rand but better randomness.
+     * "OpenSSL" based equivalent to rand & mt_rand but better randomness.
      *
      * @param int $rangeMinimum The minimum range border for randomizer
      * @param int $rangeMaximum The maximum range border for randomizer
-     * @param int $source       The source of the random bytes (OpenSSL, MCrypt, ...)
+     * @param int $source       The source of the random bytes (OpenSSL, ...)
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
      * @return int From *closed* interval [$min, $max]
      *
-     * @throws \Clickalicious\Rng\Exception
+     * @throws \Rng\Exception
      */
     protected function genericRand(
         $rangeMinimum,
         $rangeMaximum,
-        $source = self::MODE_MCRYPT
+        $source = self::MODE_OPEN_SSL
     ) {
         $diff = $rangeMaximum - ($rangeMinimum + 1);
 
@@ -319,10 +296,6 @@ class Generator
 
         do {
             switch ($source) {
-                case self::MODE_MCRYPT:
-                    $bytes = $this->getRandomBytesFromMcrypt(PHP_INT_SIZE);
-                    break;
-
                 case self::MODE_OPEN_SSL:
                 default:
                     $bytes = $this->getRandomBytesFromOpenSSL(PHP_INT_SIZE, $this->getCryptographicStrong());
@@ -336,7 +309,7 @@ class Generator
                     sprintf(
                         'Failed to read %s bytes from %s.',
                         PHP_INT_SIZE,
-                        ($source === self::MODE_MCRYPT) ? 'MCrypt' : 'OpenSSL'
+                        'OpenSSL'
                     )
                 );
             }
@@ -361,7 +334,7 @@ class Generator
     }
 
     /**
-     * Returns random bytes from MCrypt.
+     * Returns random bytes from OpenSSL.
      *
      * @param int  $numberOfBytes       The number of bytes to read and return
      * @param bool $cryptographicStrong
@@ -370,27 +343,11 @@ class Generator
      *
      * @return string The random bytes
      *
-     * @throws \Clickalicious\Rng\Exception
+     * @throws \Rng\Exception
      */
     protected function getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong)
     {
         return openssl_random_pseudo_bytes($numberOfBytes, $cryptographicStrong);
-    }
-
-    /**
-     * Returns random bytes from MCrypt.
-     *
-     * @param int $numberOfBytes The number of bytes to read and return
-     *
-     * @author Benjamin Carl <opensource@clickalicious.de>
-     *
-     * @return string The random bytes
-     *
-     * @throws \Clickalicious\Rng\Exception
-     */
-    protected function getRandomBytesFromMcrypt($numberOfBytes)
-    {
-        return mcrypt_create_iv($numberOfBytes, MCRYPT_DEV_URANDOM);
     }
 
     /**
@@ -402,7 +359,7 @@ class Generator
      *
      * @return bool TRUE on success, otherwise FALSE
      *
-     * @throws \Clickalicious\Rng\Exception
+     * @throws \Rng\Exception
      */
     protected function checkRequirements($mode)
     {
@@ -413,14 +370,6 @@ class Generator
         }
 
         switch ($mode) {
-            case self::MODE_MCRYPT:
-                if (extension_loaded(self::EXTENSION_MCRYPT) !== true) {
-                    throw new Exception(
-                        sprintf('Extension "%s" not loaded but required!', self::EXTENSION_MCRYPT)
-                    );
-                }
-                break;
-
             case self::MODE_OPEN_SSL:
             case self::MODE_PHP_DEFAULT:
             case self::MODE_PHP_MERSENNE_TWISTER:
@@ -438,6 +387,8 @@ class Generator
      * @param int $mode The mode to set
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
+     *
+     * @throws \Rng\Exception
      */
     public function setMode($mode)
     {
@@ -501,7 +452,6 @@ class Generator
                 srand($seed);
                 break;
 
-            case self::MODE_MCRYPT:
             case self::MODE_OPEN_SSL:
             default:
                 // Intentionally left blank

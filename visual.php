@@ -44,7 +44,6 @@ $height = 800;
 $generators = [
     new Rng\Generator(Rng\Generator::MODE_PHP_DEFAULT),
     new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER),
-    new Rng\Generator(Rng\Generator::MODE_MCRYPT),
     new Rng\Generator(Rng\Generator::MODE_OPEN_SSL),
 ];
 

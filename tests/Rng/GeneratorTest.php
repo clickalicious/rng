@@ -99,24 +99,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test: Get instance with mode php mcrypt extension.
-     *
-     * @author Benjamin Carl <opensource@clickalicious.de>
-     */
-    public function testCreatingInstanceByModePhpMcrypt()
-    {
-        $generator = new Generator(
-            Generator::MODE_MCRYPT
-        );
-
-        $this->assertInstanceOf(
-            'Rng\Generator',
-            $generator
-        );
-    }
-
-    /**
-     * Test: Get instance with mode php mcrypt extension.
+     * Test: Get instance with mode OpenSSL.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */
@@ -166,17 +149,6 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test generating random number with php mcrypt extension algorithm.
-     *
-     * @author Benjamin Carl <opensource@clickalicious.de>
-     */
-    public function testGeneratingRandomIntegerByPhpMcrypt()
-    {
-        $generator = new Generator(Generator::MODE_MCRYPT);
-        $this->assertInternalType('int', $generator->generate());
-    }
-
-    /**
      * Test generating random number with php openssl extension algorithm.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
@@ -209,18 +181,6 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $seed      = $generator->generateSeed();
 
         $this->assertInternalType('int', $seed);
-    }
-
-    /**
-     * Test: Test generating instance with seed.
-     *
-     * @author Benjamin Carl <opensource@clickalicious.de>
-     */
-    public function testCreatingInstanceByModeMcryptWithSeed()
-    {
-        $seed      = 123456;
-        $generator = new Generator(Generator::MODE_MCRYPT, $seed);
-        $this->assertSame($seed, $generator->getSeed());
     }
 
     /**
@@ -283,19 +243,6 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new Generator();
 
         $randomBytes = $generator->getRandomBytes(4096);
-        $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
-    }
-
-    /**
-     * Test: Test generating random bytes for public API.
-     *
-     * @author Benjamin Carl <opensource@clickalicious.de>
-     */
-    public function testGenerateRandomBytesByModePhpMcryptOnPublicApi()
-    {
-        $generator = new Generator();
-
-        $randomBytes = $generator->getRandomBytes(4096, Generator::MODE_MCRYPT);
         $this->assertEquals(4096, strlen($randomBytes), 'Validating result length in bytes ...');
     }
 

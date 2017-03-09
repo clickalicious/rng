@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/rng",
-  "description": "Rng - The secure Pseudo Random Number Generator PRNG for PHP.",
+  "description": "rng - The secure Pseudo Random Number Generator PRNG for PHP.",
   "type": "library",
   "authors": [
     {
@@ -14,15 +14,22 @@
   "prefer-stable": true,
   "require": {
     "php": ">=5.4.0",
+    "roave/security-advisories": "dev-master as 1.0.x-dev",
     "paragonie/random_compat": "^2.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "^4.8",
-    "symfony/var-dumper": "^2.8"
+    "phpunit/phpunit": "^5.7",
+    "codacy/coverage": "^1.0",
+    "symfony/var-dumper": "^3.2"
   },
   "autoload": {
     "psr-4": {
-      "Clickalicious\\": "src/Clickalicious/"
+      "Rng\\": "src/Rng/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Rng\\": "tests/Rng/"
     }
   },
   "keywords": [
@@ -36,13 +43,13 @@
     "mtcrypt",
     "openssl"
   ],
-  "homepage": "https://github.com/clickalicious/Rng",
-  "license": "BSD-3-Clause",
+  "homepage": "https://github.com/clickalicious/rng",
+  "license": "MIT",
   "support": {
     "email": "opensource@clickalicious.de",
-    "issues": "https://github.com/clickalicious/Rng/issues",
-    "wiki": "https://github.com/clickalicious/Rng/wiki",
-    "tests": "https://clickalicious.github.io/Rng"
+    "issues": "https://github.com/clickalicious/rng/issues",
+    "wiki": "https://github.com/clickalicious/rng/wiki",
+    "tests": "https://clickalicious.github.io/rng"
   },
   "config" : {
     "bin-dir" : "bin",

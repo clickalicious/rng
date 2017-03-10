@@ -35,29 +35,29 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 ## Examples
 
-Generate `random number` between 1 and 10 using `OpenSSL` random bytes (library default):
+Generate `random number` between 1 and 10 using `OPEN_SSL` random bytes (library default):
 ```php
 $generator = new Rng\Generator();
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
-Generate `random number` between 1 and 10 using `MCrypt` random bytes:
+Generate `random number` between 1 and 10 using `PHP_MERSENNE_TWISTER` random bytes:
 ```php
-$generator = new Rng\Generator(Rng\Generator::MODE_MCRYPT);
+$generator = new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
-Generate `16 random bytes` using `OpenSSL` random bytes (library default):
+Generate `16 random bytes` using `MODE_OPEN_SSL` random bytes (library default):
 ```php
 $generator = new Rng\Generator();
 $bytes     = $generator->getRandomBytes(16);
 ```
 
-Generate `32 random bytes` using `MCrypt` random bytes:
+Generate `32 random bytes` using `NATIVE-PHP` random bytes:
 ```php
-$generator = new Rng\Generator(Rng\Generator::MODE_MCRYPT);
+$generator = new Rng\Generator();
 $bytes     = $generator->getRandomBytes(32);
 ```
 
@@ -79,7 +79,8 @@ You can create a visualization of randomization (as you can see below but larger
 This library provides a state of the art `PRNG` (**P**seudo **R**andom **N**umber **G**enerator) implementation to generate secure `Pseudo Random Numbers` with PHP. The generation is either based on `Open SSL` or `MCrypt` or as fallback on PHP's internal functionality. The library also provides a very good `Seed generator` on puplic API. If you are interested in the difference between real and pseduo randomness then you could start at [https://www.random.org/randomness/](https://www.random.org/randomness/ "https://www.random.org/randomness/").
 
 [![Scott Adams](https://www.random.org/analysis/dilbert.jpg)](http://dilbert.com/strip/2001-10-25 "Copyright Universal Uclick / Scott Adams")
-DILBERT © 2001 Scott Adams.
+
+`DILBERT © 2001 Scott Adams.`
 
 
 ## Versioning
@@ -89,11 +90,7 @@ For a consistent versioning i decided to make use of `Semantic Versioning 2.0.0`
 
 ## Roadmap
 
-- [x] Target stable release `1.0.0`
-- [x] `>= 90%` test coverage
-- [x] Better visualization
-- [x] Integrate polyfill
-- [ ] Security check through 3rd-Party (Please get in contact with me)
+- No open issues.
 
 [![Throughput Graph](https://graphs.waffle.io/clickalicious/rng/throughput.svg)](https://waffle.io/clickalicious/rng/metrics)
 

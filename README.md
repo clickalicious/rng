@@ -25,10 +25,10 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 ## Features
 
  - High performance (developed using a profiler)
- - Lightweight and high-quality codebase (following PSR standards e.g. `PSR-0,1,4`)
+ - Lightweight and high-quality codebase (following PSR standards e.g. `PSR-1,2,4`)
  - Secure `PRNG` implementation (64-Bit support)
  - OOP facade to PHP core functionality
- - PHP 7.0 & HHVM ready
+ - PHP > `5.6` up to `7.2` & `HHVM` ready
  - Stable, clean + well documented code
  - Unit-tested with a good coverage
 
@@ -71,7 +71,7 @@ You can create a visualization of randomization (as you can see below but larger
 
 ## Requirements
 
- - `PHP >= 5.4` (compatible up to version 5.6 as well as 7.x and HHVM)
+ - `PHP >= 5.6` (compatible up to version `7.2` as well as `HHVM`)
 
 
 ## Philosophy

@@ -17,7 +17,6 @@
                 <directory>./docs</directory>
                 <directory>./vendor</directory>
                 <directory>./tests</directory>
-                <directory>./src/Rng/Autoloader.php</directory>
                 <directory>./src/Rng/Exception.php</directory>
             </exclude>
         </whitelist>

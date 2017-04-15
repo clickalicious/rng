@@ -1,13 +1,13 @@
-<img src="https://avatars2.githubusercontent.com/u/514566?v=3&u=4615dfc4970d93dea5d3eaf996b7903ee6e24e20&s=140" align="right" />
+<img src="https://avatars0.githubusercontent.com/u/26927954?v=3&s=80" align="right" />
 ---
 
 ![Logo of rng](docs/logo-large.png)
 
 The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
-| [![Build Status](https://travis-ci.org/clickalicious/rng.svg?branch=master)](https://travis-ci.org/clickalicious/rng) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/f53e4682e6524d44aedb454adce68a18/master.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade)	| [![Codacy coverage](https://img.shields.io/codacy/coverage/f53e4682e6524d44aedb454adce68a18.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://www.clickalicious.de/) 	|
+| [![Build Status](https://travis-ci.org/clickalicious/rng.svg?branch=master)](https://travis-ci.org/clickalicious/rng) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/f53e4682e6524d44aedb454adce68a18/master.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade)	| [![Codacy coverage](https://img.shields.io/codacy/coverage/f53e4682e6524d44aedb454adce68a18.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://clickalicious.de/) 	|
 |---	|---	|---	|---	|
-| [![GitHub release](https://img.shields.io/github/release/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/rng/releases) 	| [![Waffle.io](https://img.shields.io/waffle/label/clickalicious/rng/in%20progress.svg)](https://waffle.io/clickalicious/rng)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/rng.svg)](https://github.com/clickalicious/rng/issues) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	|
+| [![GitHub release](https://img.shields.io/github/release/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/rng/releases) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/rng.svg)](https://github.com/clickalicious/rng/issues) 	| [![Dependency Status](https://dependencyci.com/github/clickalicious/rng/badge)](https://dependencyci.com/github/clickalicious/rng)  	|
 
 
 ## Table of Contents

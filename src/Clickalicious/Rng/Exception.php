@@ -25,7 +25,7 @@
  * SOFTWARE.
  */
 
-namespace Rng;
+namespace Clickalicious\Rng;
 
 /**
  * Class Exception

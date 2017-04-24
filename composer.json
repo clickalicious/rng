@@ -25,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Clickalicious\\Rng\\": "src/Clickalicious/Rng/"
+      "Clickalicious\\Rng\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Clickalicious\\Rng\\": "tests/Clickalicious/Rng/"
+      "Clickalicious\\Rng\\": "tests/"
     }
   },
   "keywords": [
@@ -52,8 +52,8 @@
     "wiki": "https://github.com/clickalicious/rng/wiki",
     "tests": "https://clickalicious.github.io/rng"
   },
-  "config" : {
-    "bin-dir" : "bin",
+  "config": {
+    "bin-dir": "bin",
     "preferred-install": "dist"
   }
 }

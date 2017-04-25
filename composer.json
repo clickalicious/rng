@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/rng",
-  "description": "Secure Pseudo Random Number Generator PRNG for PHP.",
+  "description": "The secure Pseudo Random Number Generator (PRNG) for PHP.",
   "type": "library",
   "authors": [
     {

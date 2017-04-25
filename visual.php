@@ -40,9 +40,9 @@ $height = 800;
 
 // Our generators
 $generators = [
-    new Rng\Generator(Rng\Generator::MODE_PHP_DEFAULT),
-    new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER),
-    new Rng\Generator(Rng\Generator::MODE_OPEN_SSL),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_DEFAULT),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_MERSENNE_TWISTER),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_OPEN_SSL),
 ];
 
 $countGenerators = count($generators);

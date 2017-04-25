@@ -25,11 +25,10 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 ## Features
 
+ - Provides a secure `PRNG`: pseudo random number generator (64-Bit support) 
+ - OOP facade to PHP core functionality
  - High performance (developed using a profiler)
  - Lightweight and high-quality codebase (following PSR standards e.g. `PSR-1,2,4`)
- - Secure `PRNG` implementation (64-Bit support)
- - OOP facade to PHP core functionality
- - PHP > `5.6` up to `7.2` & `HHVM` ready
  - Stable, clean + well documented code
  - Unit-tested with a good coverage
 
@@ -38,34 +37,34 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 Generate `random number` between 1 and 10 using `OPEN_SSL` random bytes (library default):
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
 Generate `random number` between 1 and 10 using `PHP_MERSENNE_TWISTER` random bytes:
 ```php
-$generator = new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
+$generator = new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
 Generate `16 random bytes` using `MODE_OPEN_SSL` random bytes (library default):
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $bytes     = $generator->getRandomBytes(16);
 ```
 
 Generate `32 random bytes` using `NATIVE-PHP` random bytes:
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $bytes     = $generator->getRandomBytes(32);
 ```
 
 
 ### Visualization
 
-You can create a visualization of randomization (as you can see below but larger size) through [`visual.php` »](visual.php) (the file is located in root).
+You can create a visualization of randomization (as you can see below but larger size) through [`visual.php` »](visual.php) (the file is located in root). As you may see: The first square (light grey) is the default PHP random generated noise which is aligned by a pattern (you will see in the large version of the picture). The following three squares a generated using a more secure generator like Open-SSL for example. 
 
 ![Logo of rng](docs/visualization.png)
 
@@ -118,4 +117,4 @@ Thanks to our sponsors and supporters:
 
 
 ###### Copyright
-<div>Icons made by <a href="http://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

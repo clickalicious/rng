@@ -1,4 +1,4 @@
-<img src="https://avatars0.githubusercontent.com/u/26927954?v=3&s=140" align="right" />
+<img src="https://avatars0.githubusercontent.com/u/26927954?v=3&s=80" align="right" />
 
 ---
 
@@ -6,9 +6,9 @@
 
 The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
-| [![Build Status](https://travis-ci.org/clickalicious/rng.svg?branch=master)](https://travis-ci.org/clickalicious/rng) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/f53e4682e6524d44aedb454adce68a18/master.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade)	| [![Codacy coverage](https://img.shields.io/codacy/coverage/f53e4682e6524d44aedb454adce68a18.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://www.clickalicious.de/) 	|
+| [![Build Status](https://travis-ci.org/clickalicious/rng.svg?branch=master)](https://travis-ci.org/clickalicious/rng) 	| [![Codacy branch grade](https://img.shields.io/codacy/grade/f53e4682e6524d44aedb454adce68a18/master.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade)	| [![Codacy coverage](https://img.shields.io/codacy/coverage/f53e4682e6524d44aedb454adce68a18.svg)](https://www.codacy.com/app/clickalicious/rng?utm_source=github.com&utm_medium=referral&utm_content=clickalicious/rng&utm_campaign=Badge_Grade) 	| [![clickalicious open source](https://img.shields.io/badge/clickalicious-open--source-green.svg?style=flat)](https://clickalicious.de/) 	|
 |---	|---	|---	|---	|
-| [![GitHub release](https://img.shields.io/github/release/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/rng/releases) 	| [![Waffle.io](https://img.shields.io/waffle/label/clickalicious/rng/in%20progress.svg)](https://waffle.io/clickalicious/rng)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/rng.svg)](https://github.com/clickalicious/rng/issues) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	|
+| [![GitHub release](https://img.shields.io/github/release/clickalicious/rng.svg?style=flat)](https://github.com/clickalicious/rng/releases) 	| [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)  	| [![Issue Stats](https://img.shields.io/issuestats/i/github/clickalicious/rng.svg)](https://github.com/clickalicious/rng/issues) 	| [![Dependency Status](https://dependencyci.com/github/clickalicious/rng/badge)](https://dependencyci.com/github/clickalicious/rng)  	|
 
 
 ## Table of Contents
@@ -25,11 +25,10 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 ## Features
 
+ - Provides a secure `PRNG`: pseudo random number generator (64-Bit support) 
+ - OOP facade to PHP core functionality
  - High performance (developed using a profiler)
  - Lightweight and high-quality codebase (following PSR standards e.g. `PSR-1,2,4`)
- - Secure `PRNG` implementation (64-Bit support)
- - OOP facade to PHP core functionality
- - PHP > `5.6` up to `7.2` & `HHVM` ready
  - Stable, clean + well documented code
  - Unit-tested with a good coverage
 
@@ -38,34 +37,34 @@ The secure **Pseudo Random Number Generator** `PRNG` for PHP.
 
 Generate `random number` between 1 and 10 using `OPEN_SSL` random bytes (library default):
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
 Generate `random number` between 1 and 10 using `PHP_MERSENNE_TWISTER` random bytes:
 ```php
-$generator = new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
+$generator = new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
 $number    = $generator->generate(1, 10);
 echo $number;
 ```
 
 Generate `16 random bytes` using `MODE_OPEN_SSL` random bytes (library default):
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $bytes     = $generator->getRandomBytes(16);
 ```
 
 Generate `32 random bytes` using `NATIVE-PHP` random bytes:
 ```php
-$generator = new Rng\Generator();
+$generator = new \Clickalicious\Rng\Generator();
 $bytes     = $generator->getRandomBytes(32);
 ```
 
 
 ### Visualization
 
-You can create a visualization of randomization (as you can see below but larger size) through [`visual.php` »](visual.php) (the file is located in root).
+You can create a visualization of randomization (as you can see below but larger size) through [`visual.php` »](visual.php) (the file is located in root). As you may see: The first square (light grey) is the default PHP random generated noise which is aligned by a pattern (you will see in the large version of the picture). The following three squares a generated using a more secure generator like Open-SSL for example. 
 
 ![Logo of rng](docs/visualization.png)
 
@@ -118,4 +117,4 @@ Thanks to our sponsors and supporters:
 
 
 ###### Copyright
-<div>Icons made by <a href="http://www.flaticon.com/authors/roundicons" title="Roundicons">Roundicons</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+<div>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>

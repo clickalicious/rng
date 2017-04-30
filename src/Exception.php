@@ -25,33 +25,14 @@
  * SOFTWARE.
  */
 
-require_once __DIR__ . '/vendor/autoload.php';
+namespace Clickalicious\Rng;
 
-/*
- * Default random number generating easily.
- * Generate a random number with best rng available
- * between 1 and 10:
+/**
+ * Class Exception
+ *
+ * @package Rng
  */
-$generator = new \Clickalicious\Rng\Generator();
-$number    = $generator->generate(1, 10);
-echo $number.PHP_EOL;
-
-
-/*
- * Random number generating easily.
- * Generate a random number with PHP's default rng
- * between 1 and 10:
- */
-$generator = new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_DEFAULT);
-$number    = $generator->generate(1, 10);
-echo $number.PHP_EOL;
-
-
-/*
- * Random number generating easily.
- * Generate a random number with PHP's mersenne twister rng
- * between 1 and 10:
- */
-$generator = new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_MERSENNE_TWISTER);
-$number    = $generator->generate(1, 10);
-echo $number.PHP_EOL;
+class Exception extends \RuntimeException
+{
+    // Intentionally left empty
+}

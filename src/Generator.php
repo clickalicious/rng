@@ -1,10 +1,8 @@
 <?php
 
 /**
- * rng
- *
  * (The MIT license)
- * Copyright 2017 clickalicious UG, Benjamin Carl
+ * Copyright 2017 clickalicious, Benjamin Carl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
@@ -27,7 +25,7 @@
  * SOFTWARE.
  */
 
-namespace Rng;
+namespace Clickalicious\Rng;
 
 /**
  * Class Generator
@@ -128,22 +126,18 @@ class Generator
     /**
      * Constructor.
      *
-     * @param int      $mode                Mode used for generating random numbers.
-     *                                      Default is OPEN_SSL as the currently best practice for generating random
-     *                                      numbers
-     * @param int|null $seed                Optional seed used for randomizer init
-     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo)
-     *                                      randomness
+     * @param int      $mode Mode used for generating random numbers.
+     *                       Default is OPEN_SSL as the currently best practice for generating random numbers
+     * @param int|null $seed Optional seed used for randomizer init
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */
     public function __construct(
         $mode = self::MODE_OPEN_SSL,
-        $seed = null,
-        $cryptographicStrong = true
-    ) {
+        $seed = null
+    )
+    {
         $this
-            ->cryptographicStrong($cryptographicStrong)
             ->mode($mode);
 
         // Only seed if seed passed -> no longer required (since PHP 4.2.0)
@@ -165,6 +159,9 @@ class Generator
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
      * @return int The generated (pseudo) random number
+     *
+     * @throws \Clickalicious\Rng\Exception
+     * @throws \Clickalicious\Rng\CryptographicWeaknessException
      */
     public function generate($rangeMinimum = 0, $rangeMaximum = PHP_INT_MAX)
     {
@@ -198,30 +195,31 @@ class Generator
     {
         list($usec, $sec) = explode(' ', microtime());
 
-        return (int) ($sec + strrev($usec * 1000000)) + 13;
+        return (int)($sec + strrev($usec * 1000000)) + 13;
     }
 
     /**
      * Returns random bytes secure for cryptographic context.
      *
-     * @param int      $numberOfBytes       Number of bytes to read and return.
-     * @param int|null $source              Source of random bytes.
-     * @param bool     $cryptographicStrong TRUE (default) to enable cryptographic cryptographicStrong (pseudo)
-     *                                      randomness.
+     * @param int      $numberOfBytes Number of bytes to read and return.
+     * @param int|null $source        Source of random bytes.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
      * @return string Random bytes
+     *
+     * @throws \Clickalicious\Rng\Exception
+     * @throws \Clickalicious\Rng\CryptographicWeaknessException
      */
     public function getRandomBytes(
         $numberOfBytes = PHP_INT_MAX,
-        $source = null,
-        $cryptographicStrong = true
-    ) {
+        $source = null
+    )
+    {
         switch ($source) {
 
             case self::MODE_OPEN_SSL:
-                $randomBytes = $this->getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong);
+                $randomBytes = $this->getRandomBytesFromOpenSSL($numberOfBytes);
                 break;
 
             default:
@@ -278,13 +276,15 @@ class Generator
      *
      * @return int From *closed* interval [$min, $max]
      *
-     * @throws \Rng\Exception
+     * @throws \Clickalicious\Rng\Exception
+     * @throws \Clickalicious\Rng\CryptographicWeaknessException
      */
     protected function genericRand(
         $rangeMinimum,
         $rangeMaximum,
         $source = self::MODE_OPEN_SSL
-    ) {
+    )
+    {
         $diff = $rangeMaximum - ($rangeMinimum + 1);
 
         if ($diff > PHP_INT_MAX) {
@@ -298,7 +298,7 @@ class Generator
             switch ($source) {
                 case self::MODE_OPEN_SSL:
                 default:
-                    $bytes = $this->getRandomBytesFromOpenSSL(PHP_INT_SIZE, $this->getCryptographicStrong());
+                    $bytes = $this->getRandomBytesFromOpenSSL(PHP_INT_SIZE);
                     break;
             }
 
@@ -318,7 +318,7 @@ class Generator
             if (PHP_INT_SIZE === 8) {
                 // 64-bit versions
                 list($higher, $lower) = array_values(unpack('N2', $bytes));
-                $val                  = $higher << 32 | $lower;
+                $val = $higher << 32 | $lower;
             } else {
                 // 32-bit versions
                 $val = unpack('Nint', $bytes);
@@ -336,18 +336,27 @@ class Generator
     /**
      * Returns random bytes from OpenSSL.
      *
-     * @param int  $numberOfBytes       The number of bytes to read and return
-     * @param bool $cryptographicStrong
+     * @param int $numberOfBytes Number of bytes to read and return
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
      * @return string The random bytes
      *
-     * @throws \Rng\Exception
+     * @throws \Clickalicious\Rng\CryptographicWeaknessException
      */
-    protected function getRandomBytesFromOpenSSL($numberOfBytes, $cryptographicStrong)
+    protected function getRandomBytesFromOpenSSL($numberOfBytes)
     {
-        return openssl_random_pseudo_bytes($numberOfBytes, $cryptographicStrong);
+        $randomBytes = openssl_random_pseudo_bytes($numberOfBytes, $cryptographicStrong);
+
+        $this->setCryptographicStrong($cryptographicStrong);
+
+        if (false === $randomBytes || '' === $randomBytes || false === $cryptographicStrong) {
+            throw new CryptographicWeaknessException(
+                'Error fetching random bytes from OpenSSL.'
+            );
+        }
+
+        return $randomBytes;
     }
 
     /**
@@ -359,7 +368,7 @@ class Generator
      *
      * @return bool TRUE on success, otherwise FALSE
      *
-     * @throws \Rng\Exception
+     * @throws \Clickalicious\Rng\Exception
      */
     protected function checkRequirements($mode)
     {
@@ -388,7 +397,7 @@ class Generator
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
-     * @throws \Rng\Exception
+     * @throws \Clickalicious\Rng\Exception
      */
     public function setMode($mode)
     {
@@ -432,6 +441,8 @@ class Generator
      * @param int $seed The seed value
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
+     *
+     * @throws \Clickalicious\Rng\Exception
      */
     public function setSeed($seed)
     {
@@ -492,7 +503,7 @@ class Generator
     /**
      * Setter for cryptographicStrong.
      *
-     * @param bool $cryptographicStrong TRUE to set cryptographic flag, FALSE to disable
+     * @param bool $cryptographicStrong TRUE to mark random bytes as cryptographic strong, FALSE to mark as weak.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      */
@@ -504,7 +515,7 @@ class Generator
     /**
      * Setter for cryptographicStrong.
      *
-     * @param bool $cryptographicStrong TRUE to set cryptographic flag, FALSE to disable
+     * @param bool $cryptographicStrong TRUE to mark random bytes as cryptographic strong, FALSE to mark as weak.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
@@ -522,9 +533,10 @@ class Generator
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
      *
-     * @return bool The cryptographicStrong flag if set, otherwise NULL
+     * @return bool TRUE if last generated bytes are created using a cryptographic strong algorithm, FALSE when using a
+     *              weak algorithm, otherwise NULL if no bytes created at all.
      */
-    protected function getCryptographicStrong()
+    public function isCryptographicStrong()
     {
         return $this->cryptographicStrong;
     }

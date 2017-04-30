@@ -1,10 +1,8 @@
 <?php
 
 /**
- * rng
- *
  * (The MIT license)
- * Copyright 2017 clickalicious UG, Benjamin Carl
+ * Copyright 2017 clickalicious, Benjamin Carl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
@@ -42,9 +40,9 @@ $height = 800;
 
 // Our generators
 $generators = [
-    new Rng\Generator(Rng\Generator::MODE_PHP_DEFAULT),
-    new Rng\Generator(Rng\Generator::MODE_PHP_MERSENNE_TWISTER),
-    new Rng\Generator(Rng\Generator::MODE_OPEN_SSL),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_DEFAULT),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_PHP_MERSENNE_TWISTER),
+    new \Clickalicious\Rng\Generator(\Clickalicious\Rng\Generator::MODE_OPEN_SSL),
 ];
 
 $countGenerators = count($generators);

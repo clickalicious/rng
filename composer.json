@@ -1,6 +1,6 @@
 {
   "name": "clickalicious/rng",
-  "description": "rng - The secure Pseudo Random Number Generator PRNG for PHP.",
+  "description": "The secure Pseudo Random Number Generator (PRNG) for PHP.",
   "type": "library",
   "authors": [
     {
@@ -13,7 +13,7 @@
   "minimum-stability": "stable",
   "prefer-stable": true,
   "require": {
-    "php": ">=5.4.0",
+    "php": ">=5.6.0",
     "ext-openssl": "*",
     "roave/security-advisories": "dev-master as 1.0.x-dev",
     "paragonie/random_compat": "^2.0"
@@ -25,12 +25,12 @@
   },
   "autoload": {
     "psr-4": {
-      "Rng\\": "src/Rng/"
+      "Clickalicious\\Rng\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Rng\\": "tests/Rng/"
+      "Clickalicious\\Rng\\": "tests/"
     }
   },
   "keywords": [
@@ -52,8 +52,8 @@
     "wiki": "https://github.com/clickalicious/rng/wiki",
     "tests": "https://clickalicious.github.io/rng"
   },
-  "config" : {
-    "bin-dir" : "bin",
-    "preferred-install": "source"
+  "config": {
+    "bin-dir": "bin",
+    "preferred-install": "dist"
   }
 }

@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/4.5/phpunit.xsd"
-         backupGlobals="false"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/5.7/phpunit.xsd"
 >
-
-
     <testsuites>
-        <testsuite name="clickalicious\rng Test Suite">
+        <testsuite name="Test Suite">
             <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
@@ -17,10 +14,11 @@
             <directory>./src</directory>
             <exclude>
                 <directory>./bin</directory>
+                <directory>./build</directory>
                 <directory>./docs</directory>
                 <directory>./vendor</directory>
                 <directory>./tests</directory>
-                <directory>./src/Rng/Autoloader.php</directory>
+                <directory>./demo</directory>
                 <directory>./src/Rng/Exception.php</directory>
             </exclude>
         </whitelist>

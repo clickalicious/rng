@@ -1,10 +1,8 @@
 <?php
 
 /**
- * rng
- *
  * (The MIT license)
- * Copyright 2017 clickalicious UG, Benjamin Carl
+ * Copyright 2017 clickalicious, Benjamin Carl
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
@@ -27,7 +25,7 @@
  * SOFTWARE.
  */
 
-namespace Rng;
+namespace Clickalicious\Rng;
 
 /**
  * Class GeneratorTest
@@ -44,7 +42,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     public function testInstance()
     {
         $this->assertInstanceOf(
-            'Rng\Generator',
+            'Clickalicious\Rng\Generator',
             new Generator()
         );
     }
@@ -59,7 +57,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new Generator();
 
         $this->assertInstanceOf(
-            'Rng\Generator',
+            'Clickalicious\Rng\Generator',
             $generator
         );
     }
@@ -76,7 +74,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Rng\Generator',
+            'Clickalicious\Rng\Generator',
             $generator
         );
     }
@@ -93,7 +91,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Rng\Generator',
+            'Clickalicious\Rng\Generator',
             $generator
         );
     }
@@ -110,7 +108,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Rng\Generator',
+            'Clickalicious\Rng\Generator',
             $generator
         );
     }
@@ -163,7 +161,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      * Test: Test passing invalid/unknown mode.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @expectedException \Rng\Exception
+     * @expectedException \Clickalicious\Rng\Exception
      */
     public function testCreatingInstanceByInvalidModeException()
     {
@@ -223,7 +221,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      * Test: Test generating instance with seed.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @expectedException \Rng\Exception
+     * @expectedException \Clickalicious\Rng\Exception
      */
     public function testTryToSetVariableWithInvalidTypeForSeed()
     {
@@ -263,7 +261,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      * Test: Test setting an invalid mode.
      *
      * @author Benjamin Carl <opensource@clickalicious.de>
-     * @expectedException \Rng\Exception
+     * @expectedException \Clickalicious\Rng\Exception
      */
     public function testTryToSetInvalidEncryptionMode()
     {
@@ -279,6 +277,6 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     public function testPassingSeedToConstructor()
     {
         $generator = new Generator(Generator::MODE_OPEN_SSL, time());
-        $this->assertInstanceOf('Rng\Generator', $generator);
+        $this->assertInstanceOf('Clickalicious\Rng\Generator', $generator);
     }
 }

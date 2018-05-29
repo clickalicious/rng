@@ -2,7 +2,7 @@
 
 /**
  * (The MIT license)
- * Copyright 2017 clickalicious, Benjamin Carl
+ * Copyright 2017 clickalicious, Benjamin Carl.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the
@@ -27,12 +27,12 @@
 
 namespace Clickalicious\Rng;
 
+use PHPUnit\Framework\TestCase;
+
 /**
- * Class GeneratorTest
- *
- * @package Rng
+ * Class GeneratorTest.
  */
-class GeneratorTest extends \PHPUnit_Framework_TestCase
+class GeneratorTest extends TestCase
 {
     /**
      * Test: Get instance.
@@ -42,7 +42,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     public function testInstance()
     {
         $this->assertInstanceOf(
-            'Clickalicious\Rng\Generator',
+            Generator::class,
             new Generator()
         );
     }
@@ -57,7 +57,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         $generator = new Generator();
 
         $this->assertInstanceOf(
-            'Clickalicious\Rng\Generator',
+            Generator::class,
             $generator
         );
     }
@@ -74,7 +74,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Clickalicious\Rng\Generator',
+            Generator::class,
             $generator
         );
     }
@@ -91,7 +91,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Clickalicious\Rng\Generator',
+            Generator::class,
             $generator
         );
     }
@@ -108,7 +108,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->assertInstanceOf(
-            'Clickalicious\Rng\Generator',
+            Generator::class,
             $generator
         );
     }
@@ -176,7 +176,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     public function testGeneratingIntegerSeed()
     {
         $generator = new Generator();
-        $seed      = $generator->generateSeed();
+        $seed = $generator->generateSeed();
 
         $this->assertInternalType('int', $seed);
     }
@@ -188,7 +188,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreatingInstanceByModeOpenSslWithSeed()
     {
-        $seed      = 123456;
+        $seed = 123456;
         $generator = new Generator(Generator::MODE_OPEN_SSL, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -200,7 +200,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreatingInstanceByModePhpDefaultWithSeed()
     {
-        $seed      = 123456;
+        $seed = 123456;
         $generator = new Generator(Generator::MODE_PHP_DEFAULT, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -212,7 +212,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testCreatingInstanceByModePhpMersenneTwisterWithSeed()
     {
-        $seed      = 123456;
+        $seed = 123456;
         $generator = new Generator(Generator::MODE_PHP_MERSENNE_TWISTER, $seed);
         $this->assertSame($seed, $generator->getSeed());
     }
@@ -225,7 +225,7 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
      */
     public function testTryToSetVariableWithInvalidTypeForSeed()
     {
-        $seed      = 'Foo';
+        $seed = 'Foo';
         $generator = new Generator();
         $generator
             ->setSeed($seed);
@@ -277,6 +277,34 @@ class GeneratorTest extends \PHPUnit_Framework_TestCase
     public function testPassingSeedToConstructor()
     {
         $generator = new Generator(Generator::MODE_OPEN_SSL, time());
-        $this->assertInstanceOf('Clickalicious\Rng\Generator', $generator);
+        $this->assertInstanceOf(Generator::class, $generator);
+    }
+
+    /**
+     * Test: Test should throw the invalid range excpetion.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testGenerateOnInvalidRange()
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Bad range');
+        $generator = new Generator(Generator::MODE_OPEN_SSL);
+        $generator->generate(-PHP_INT_MAX, PHP_INT_MAX);
+    }
+
+    /**
+     * Test: Test should throw the invalid range excpetion.
+     *
+     * @author Benjamin Carl <opensource@clickalicious.de>
+     */
+    public function testIsCryptographicStrong()
+    {
+        $generator = new Generator(Generator::MODE_OPEN_SSL);
+        $this->assertNull($generator->isCryptographicStrong());
+
+        $generator = new Generator(Generator::MODE_OPEN_SSL);
+        $generator->generate();
+        $this->assertTrue($generator->isCryptographicStrong());
     }
 }
